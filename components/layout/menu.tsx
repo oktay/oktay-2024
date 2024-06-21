@@ -12,7 +12,7 @@ import Navigation from "./navigation";
 export default function Menu() {
   return (
     <Drawer>
-      <DrawerTrigger>
+      <DrawerTrigger asChild>
         <Button variant="ghost" size="icon">
           <span className="sr-only">Open menu</span>
           <TriangleIcon size={18} />
