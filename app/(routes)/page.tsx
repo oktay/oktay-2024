@@ -15,7 +15,7 @@ export default async function Home() {
   const { data } = await performRequest({ query: homepageQuery });
 
   return (
-    <section>
+    <section className="animate-page-scale-in origin-top">
       <div className="container max-w-4xl">
         <RichText content={data.hero.description} />
 

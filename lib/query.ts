@@ -22,6 +22,17 @@ export const experiencesSeoQuery = `
   ${metaTagsFragment}
 `;
 
+export const projectsSeoQuery = `
+  query SeoQuery {
+    projects: projectsPage {
+      seo: _seoMetaTags {
+        ...metaTagsFragment
+      }
+    }
+  }
+  ${metaTagsFragment}
+`;
+
 export const authorQuery = `
   query AuthorQuery {
     author: hero {
@@ -65,6 +76,28 @@ export const experiencesQuery = `
       }
     }
     page: experiencesPage {
+      title
+      description
+    }
+  }
+  ${responsiveImageFragment}
+`;
+
+export const projectsQuery = `
+  query ProjectsQuery {
+    projects: allProjects {
+      id
+      title
+      description
+      url
+      tags
+      image {
+        responsiveImage {
+          ...responsiveImageFragment
+        }
+      }
+    }
+    page: projectsPage {
       title
       description
     }

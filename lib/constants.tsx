@@ -1,6 +1,7 @@
 import {
   BriefcaseIcon,
   CameraIcon,
+  CodeIcon,
   GithubIcon,
   HomeIcon,
   LinkedinIcon,
@@ -22,6 +23,11 @@ export const LINKS = [
     href: "/experiences",
     label: "Experiences",
     icon: <BriefcaseIcon size={16} />,
+  },
+  {
+    href: "/projects",
+    label: "Projects",
+    icon: <CodeIcon size={16} />,
   },
 ];
 

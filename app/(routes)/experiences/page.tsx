@@ -11,12 +11,12 @@ export async function generateMetadata() {
   return toNextMetadata([...response.data.experiences.seo]);
 }
 
-export default async function Home() {
+export default async function Experiences() {
   const { data } = await performRequest({ query: experiencesQuery });
   const { groupedExperiences, years } = groupExperienceByYear(data.experiences);
 
   return (
-    <section id="experiences">
+    <section className="animate-page-scale-in origin-top">
       <div className="container max-w-4xl">
         <RichText content={data.page.description} />
 
