@@ -1,0 +1,8 @@
+{
+  "editor.tabSize": 2,
+  "editor.codeActionsOnSave": [
+    "source.addMissingImports",
+    "source.removeUnused",
+    "source.fixAll.eslint",
+  ],
+}
