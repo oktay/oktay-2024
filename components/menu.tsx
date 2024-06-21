@@ -1,13 +1,13 @@
 import { TriangleIcon } from "lucide-react";
 
-import { Button } from "../ui/button";
+import Navigation from "./navigation";
+import { Button } from "./ui/button";
 import {
   Drawer,
   DrawerContent,
   DrawerFooter,
   DrawerTrigger,
-} from "../ui/drawer";
-import Navigation from "./navigation";
+} from "./ui/drawer";
 
 export default function Menu() {
   return (

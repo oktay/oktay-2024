@@ -86,9 +86,3 @@
     @apply leading-7 [&:not(:first-child)]:mt-6;
   }
 }
-
-@layer components {
-  .link {
-    @apply font-medium text-primary underline underline-offset-4;
-  }
-}

@@ -26,27 +26,3 @@ export const performRequest = async ({
 
   return responseBody;
 };
-
-export const SEO_QUERY = `
-  query SeoQuery {
-    homepage: hero {
-      seo: _seoMetaTags {
-        attributes
-        content
-        tag
-      }
-    }
-  }
-`;
-
-export const HERO_QUERY = `
-  query HeroQuery {
-    hero {
-      description(markdown: false)
-      actions {
-        link
-        title
-      }
-    }
-  }
-`;
