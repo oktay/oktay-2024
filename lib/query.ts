@@ -69,6 +69,7 @@ export const experiencesQuery = `
       description
       startDate
       endDate
+      tags
       logo {
         responsiveImage(imgixParams: { fit: crop, w: 48, h: 48, auto: format }) {
           ...responsiveImageFragment

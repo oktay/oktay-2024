@@ -28,7 +28,7 @@ export default function ProjectCard({
         />
       </a>
 
-      <div className="flex flex-col h-full p-4">
+      <div className="flex flex-col h-full md:p-4">
         <strong className="font-medium">{title}</strong>
 
         <div className="text-muted-foreground">

@@ -3,6 +3,7 @@ import { Image } from "react-datocms";
 import { formatISODate } from "@/lib/utils";
 
 import RichText from "./rich-text";
+import { Badge } from "./ui/badge";
 
 export default function ExperienceCard({
   company,
@@ -11,12 +12,14 @@ export default function ExperienceCard({
   startDate,
   endDate,
   logo,
+  tags,
 }: {
   company: string;
   workTitle: string;
   description: string;
   startDate: string;
   endDate: string;
+  tags: string;
   logo: {
     responsiveImage: any;
   };
@@ -45,6 +48,17 @@ export default function ExperienceCard({
         </div>
 
         <RichText content={description} />
+
+        <div className="flex flex-wrap gap-2 mt-4">
+          {tags
+            .split(",")
+            .filter(Boolean)
+            .map((tag) => (
+              <Badge key={tag} variant="outline">
+                {tag}
+              </Badge>
+            ))}
+        </div>
       </div>
     </div>
   );
