@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={GeistSans.variable}>
-      <body>
+      <body className="overflow-hidden">
         <div className="bg-background" vaul-drawer-wrapper="">
           <div className="flex flex-col h-screen md:flex-row">
             <header className="z-10 bg-background border-b md:hidden">

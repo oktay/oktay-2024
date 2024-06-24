@@ -18,8 +18,6 @@ export default async function Projects() {
       <div className="container max-w-4xl">
         <RichText content={data.page.description} />
 
-        <hr className="my-8" />
-
         <div className="mt-8 flex flex-col gap-8">
           {data.projects.map(
             (project: {

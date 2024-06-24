@@ -20,9 +20,7 @@ export default async function Experiences() {
       <div className="container max-w-4xl">
         <RichText content={data.page.description} />
 
-        <hr className="my-8" />
-
-        <div className="mt-8 space-y-12">
+        <div className="mt-16 space-y-12">
           {years.map((year) => (
             <div
               key={year}
