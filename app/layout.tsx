@@ -37,7 +37,7 @@ export default function RootLayout({
               </ScrollArea>
 
               <ScrollArea className="md:flex-1">
-                <main className="py-12 md:py-24">{children}</main>
+                <main className="py-12 2xl:py-24">{children}</main>
               </ScrollArea>
             </div>
           </div>
