@@ -1,4 +1,9 @@
-import { metaTagsFragment, responsiveImageFragment } from "./fragments";
+import {
+  authorFragment,
+  experienceFragment,
+  metaTagsFragment,
+  projectFragment,
+} from "./fragments";
 
 export const homepageSeoQuery = `
   query SeoQuery {
@@ -36,16 +41,10 @@ export const projectsSeoQuery = `
 export const authorQuery = `
   query AuthorQuery {
     author: hero {
-      name
-      job
-      profilePicture {
-        responsiveImage(imgixParams: { fit: crop, w: 40, h: 40, auto: format }) {
-          ...responsiveImageFragment
-        }
-      }
+      ...authorFragment
     }
   }
-  ${responsiveImageFragment}
+  ${authorFragment}
 `;
 
 export const homepageQuery = `
@@ -63,45 +62,25 @@ export const homepageQuery = `
 export const experiencesQuery = `
   query ExperiencesQuery {
     experiences: allExperiences(orderBy: startDate_DESC) {
-      id
-      company
-      workTitle
-      description
-      startDate
-      endDate
-      tags
-      logo {
-        responsiveImage(imgixParams: { fit: crop, w: 48, h: 48, auto: format }) {
-          ...responsiveImageFragment
-        }
-      }
+      ...experienceFragment
     }
     page: experiencesPage {
       title
       description
     }
   }
-  ${responsiveImageFragment}
+  ${experienceFragment}
 `;
 
 export const projectsQuery = `
   query ProjectsQuery {
     projects: allProjects {
-      id
-      title
-      description
-      url
-      tags
-      image {
-        responsiveImage {
-          ...responsiveImageFragment
-        }
-      }
+      ...projectFragment
     }
     page: projectsPage {
       title
       description
     }
   }
-  ${responsiveImageFragment}
+  ${projectFragment}
 `;
