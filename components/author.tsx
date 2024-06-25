@@ -16,11 +16,13 @@ export default async function Author() {
       asChild
     >
       <Link href="/">
-        {/* eslint-disable-next-line jsx-a11y/alt-text */}
-        <Image
-          data={data.author.profilePicture.responsiveImage}
-          className="rounded-full"
-        />
+        <div className="aspect-square relative w-10 h-10">
+          {/* eslint-disable-next-line jsx-a11y/alt-text */}
+          <Image
+            data={data.author.profilePicture.responsiveImage}
+            className="rounded-full"
+          />
+        </div>
 
         <div className="flex flex-col">
           <span>{data.author.name}</span>

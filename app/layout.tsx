@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={GeistSans.variable}>
+    <html lang="en" className={GeistSans.variable} suppressHydrationWarning>
       <body className="overflow-hidden">
         <ThemeProvider attribute="class" defaultTheme="light">
           <div className="bg-background" vaul-drawer-wrapper="">

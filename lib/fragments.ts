@@ -26,7 +26,7 @@ export const authorFragment = `
     name
     job
     profilePicture {
-      responsiveImage(imgixParams: { fit: crop, w: 40, h: 40, auto: format }) {
+      responsiveImage(imgixParams: { w: 40, h: 40 }) {
         ...responsiveImageFragment
       }
     }
@@ -44,7 +44,7 @@ export const experienceFragment = `
     endDate
     tags
     logo {
-      responsiveImage(imgixParams: { fit: crop, w: 48, h: 48, auto: format }) {
+      responsiveImage(imgixParams: { w: 48, h: 48 }) {
         ...responsiveImageFragment
       }
     }

@@ -29,11 +29,11 @@ export default function ExperienceCard({
 
   return (
     <div className="flex gap-6">
-      <div>
+      <div className="aspect-square relative w-12 h-12">
         {/* eslint-disable-next-line jsx-a11y/alt-text */}
         <Image
           data={logo.responsiveImage}
-          className="w-5! h-5! rounded-full relative z-10 border"
+          className="rounded-full relative z-10 border"
         />
       </div>
 
