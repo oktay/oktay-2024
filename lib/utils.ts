@@ -28,9 +28,32 @@ export function groupExperienceByYear(experiences: any[]) {
     {},
   );
 
-  const years = Object.keys(groupedExperiences).sort(
-    (a, b) => Number(b) - Number(a),
-  );
+  const years = Object.keys(groupedExperiences).sort().reverse();
 
   return { groupedExperiences, years };
+}
+
+export function groupBookmarkByDay(bookmarks: any[]) {
+  const groupedBookmarks = bookmarks.reduce(
+    (acc: Record<string, any>, item: any) => {
+      const date = new Date(item.created).toLocaleDateString("en-US", {
+        month: "short",
+        day: "2-digit",
+        year: "numeric",
+      });
+
+      if (!acc[date]) {
+        acc[date] = [];
+      }
+
+      acc[date].push(item);
+
+      return acc;
+    },
+    {},
+  );
+
+  const dates = Object.keys(groupedBookmarks).sort().reverse();
+
+  return { groupedBookmarks, dates };
 }

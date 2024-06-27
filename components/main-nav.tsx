@@ -1,4 +1,4 @@
-import { GithubIcon } from "lucide-react";
+import { GitBranch } from "lucide-react";
 
 import { LINKS, SOCIALS } from "@/lib/constants";
 
@@ -7,14 +7,14 @@ import { ModeToggle } from "./mode-toggle";
 import NavLink from "./nav-link";
 import { Button } from "./ui/button";
 
-export default function Navigation() {
+export default function MainNav() {
   return (
     <nav className="flex flex-col gap-4 py-4 md:h-[100dvh]">
       <Author />
 
       <div className="flex flex-col">
-        {LINKS.map(({ href, label, icon }) => (
-          <NavLink key={href} href={href} label={label} icon={icon} />
+        {LINKS.map(({ href, label }) => (
+          <NavLink key={href} href={href} label={label} />
         ))}
       </div>
 
@@ -25,8 +25,8 @@ export default function Navigation() {
           Social
         </strong>
 
-        {SOCIALS.map(({ href, label, icon }) => (
-          <NavLink key={href} href={href} label={label} icon={icon} />
+        {SOCIALS.map(({ href, label }) => (
+          <NavLink key={href} href={href} label={label} />
         ))}
       </div>
 
@@ -34,7 +34,7 @@ export default function Navigation() {
         <ModeToggle />
         <Button variant="outline" className="flex-1" asChild>
           <a href="//github.com/oktay/oktay-2024" target="_blank">
-            <GithubIcon className="h-4 w-4 mr-2" />
+            <GitBranch className="h-4 w-4 mr-2" />
             <span>Source code</span>
           </a>
         </Button>

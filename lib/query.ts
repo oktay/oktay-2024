@@ -38,6 +38,17 @@ export const projectsSeoQuery = `
   ${metaTagsFragment}
 `;
 
+export const bookmarksSeoQuery = `
+  query SeoQuery {
+    bookmarks: bookmarksPage {
+      seo: _seoMetaTags {
+        ...metaTagsFragment
+      }
+    }
+  }
+  ${metaTagsFragment}
+`;
+
 export const authorQuery = `
   query AuthorQuery {
     author: hero {
@@ -51,9 +62,10 @@ export const homepageQuery = `
   query HomepageQuery {
     hero {
       description
-      actions {
+      buttons {
         link
         title
+        variant
       }
     }
   }
@@ -83,4 +95,13 @@ export const projectsQuery = `
     }
   }
   ${projectFragment}
+`;
+
+export const bookmarksQuery = `
+  query BookmarksQuery {
+    page: bookmarksPage {
+      title
+      description
+    }
+  }
 `;

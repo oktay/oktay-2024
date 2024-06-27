@@ -1,18 +1,29 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
+import {
+  ArrowUpRight,
+  BookmarkIcon,
+  DraftingCompassIcon,
+  SparklesIcon,
+  TentIcon,
+} from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { Button } from "./ui/button";
 
+const iconMap: Record<string, any> = {
+  Home: <TentIcon size={16} />,
+  Experiences: <SparklesIcon size={16} />,
+  Projects: <DraftingCompassIcon size={16} />,
+  Bookmarks: <BookmarkIcon size={16} />,
+};
+
 export default function NavLink({
   href,
-  icon,
   label,
 }: {
   href: string;
-  icon: React.ReactNode;
   label: string;
 }) {
   const pathname = usePathname();
@@ -27,7 +38,7 @@ export default function NavLink({
       asChild
     >
       <Link href={href} target={isExternal ? "_blank" : ""}>
-        {icon} {label}
+        {iconMap[label]} {label}
         {isExternal && <ArrowUpRight size={14} className="ml-auto" />}
       </Link>
     </Button>

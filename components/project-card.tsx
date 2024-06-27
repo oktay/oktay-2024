@@ -19,16 +19,16 @@ export default function ProjectCard({
   tags: string;
 }) {
   return (
-    <div className="grid gap-4">
-      <a href={url} target="_blank">
+    <div>
+      <a href={url} target="_blank" className="col-span-2">
         {/* eslint-disable-next-line jsx-a11y/alt-text */}
         <Image
           data={image.responsiveImage}
-          className="rounded-lg hover:opacity-90 transition"
+          className="rounded hover:opacity-90 transition"
         />
       </a>
 
-      <div className="flex flex-col h-full md:p-4">
+      <div className="flex flex-col py-4">
         <strong className="font-medium">{title}</strong>
 
         <div className="text-muted-foreground">
@@ -42,7 +42,7 @@ export default function ProjectCard({
           <ArrowUpRight size={14} />
         </div>
 
-        <div className="flex gap-2 mt-8">
+        <div className="flex gap-2 mt-4">
           {tags.split(",").map((tag) => (
             <Badge key={tag} variant="outline">
               {tag}

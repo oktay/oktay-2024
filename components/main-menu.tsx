@@ -1,7 +1,7 @@
 import { DialogDescription, DialogTitle } from "@radix-ui/react-dialog";
-import { TriangleIcon } from "lucide-react";
+import { MenuIcon } from "lucide-react";
 
-import Navigation from "./navigation";
+import MainNav from "./main-nav";
 import { Button } from "./ui/button";
 import {
   Drawer,
@@ -11,13 +11,13 @@ import {
   DrawerTrigger,
 } from "./ui/drawer";
 
-export default function Menu() {
+export default function MainMenu() {
   return (
     <Drawer>
       <DrawerTrigger asChild>
         <Button variant="ghost" size="icon">
           <span className="sr-only">Open menu</span>
-          <TriangleIcon size={18} />
+          <MenuIcon size={24} />
         </Button>
       </DrawerTrigger>
 
@@ -28,7 +28,7 @@ export default function Menu() {
 
       <DrawerContent>
         <DrawerFooter>
-          <Navigation />
+          <MainNav />
         </DrawerFooter>
       </DrawerContent>
     </Drawer>

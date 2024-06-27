@@ -1,5 +1,6 @@
 import { toNextMetadata } from "react-datocms";
 
+import MainPage from "@/components/main-page";
 import ProjectCard from "@/components/project-card";
 import RichText from "@/components/rich-text";
 import { performRequest } from "@/lib/datocms";
@@ -14,25 +15,13 @@ export default async function Projects() {
   const { data } = await performRequest({ query: projectsQuery });
 
   return (
-    <section className="animate-page-scale-in origin-top">
-      <div className="container max-w-4xl">
-        <RichText content={data.page.description} />
-
-        <div className="mt-8 flex flex-col gap-8">
-          {data.projects.map(
-            (project: {
-              id: string;
-              title: string;
-              description: any;
-              url: string;
-              image: any;
-              tags: string;
-            }) => (
-              <ProjectCard key={project.id} {...project} />
-            ),
-          )}
-        </div>
+    <MainPage>
+      <RichText content={data.page.description} />
+      <div className="mt-8 flex flex-col gap-8">
+        {data.projects.map((project: any) => (
+          <ProjectCard key={project.id} {...project} />
+        ))}
       </div>
-    </section>
+    </MainPage>
   );
 }
