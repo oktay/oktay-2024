@@ -28,8 +28,8 @@ export default function ExperienceCard({
   const formattedEndDate = endDate ? formatISODate(endDate) : "Present";
 
   return (
-    <div className="flex gap-6">
-      <div className="aspect-square relative w-12 h-12">
+    <div className="flex gap-6 relative">
+      <div className="aspect-square w-12 h-12 sticky top-2 z-10">
         {/* eslint-disable-next-line jsx-a11y/alt-text */}
         <Image
           data={logo.responsiveImage}

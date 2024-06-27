@@ -12,7 +12,7 @@ export default function ExperienceList({ experiences }: { experiences: any }) {
           key={year}
           className="flex flex-col lg:flex-row gap-8 lg:gap-16 relative"
         >
-          <strong className="block text-xl font-medium sticky top-4 h-full">
+          <strong className="block text-xl font-medium md:sticky md:top-4 h-full">
             {year}
           </strong>
 
