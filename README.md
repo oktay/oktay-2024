@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Personal Website
 
-## Getting Started
+This project is a personal website built with [Next.js](https://nextjs.org/), [TypeScript](https://www.typescriptlang.org/), [Tailwind CSS](https://tailwindcss.com/), and [shadcn/ui](https://github.com/shadcn/ui). The content is managed using [DatoCMS](https://www.datocms.com/). The website showcases my work experience and projects.
 
-First, run the development server:
+## Screenshot
+
+<img src=".github/screenshot.png" />
+
+## Features
+
+- Dynamic content management using DatoCMS
+- Pages displaying work experiences and projects
+- Responsive design
+- Fast and modern user interface
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/oktay/oktay-2024.git
+cd personal-website
+```
+
+Install the dependencies:
+
+```bash
+npm install
+```
+
+## Setting Up DatoCMS
+
+1. Create an account on [DatoCMS](https://www.datocms.com/) and set up a new project.
+2. Add the necessary models and fields for your content (e.g., Work Experience, Projects).
+3. Obtain your DatoCMS API token and set it in your environment variables:
+
+Create a `.env.local` file in the root of your project and add the following:
+
+```plaintext
+NEXT_DATOCMS_API_TOKEN="your-datocms-api-token"
+```
+
+## Starting the Development Server
+
+To start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. The page will automatically reload if you make changes to the code.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Building for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+To build the application for production:
 
-## Learn More
+```bash
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+This command will create an optimized build in the `.next` folder.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Technologies Used
 
-## Deploy on Vercel
+- [Next.js](https://nextjs.org/) - React framework
+- [TypeScript](https://www.typescriptlang.org/) - Typed superset of JavaScript
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
+- [shadcn/ui](https://github.com/shadcn/ui) - UI components library
+- [DatoCMS](https://www.datocms.com/) - Headless CMS for content management
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+If you would like to contribute, please open a pull request or submit an issue. Contributions and feedback are welcome.
+
+## License
+
+This project is licensed under the MIT License. See the `LICENSE` file for more information.
+
+---
+
+Feel free to customize this according to your project's specifics. Happy coding!
