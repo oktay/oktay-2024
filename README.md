@@ -19,7 +19,7 @@ Clone the repository:
 
 ```bash
 git clone https://github.com/oktay/oktay-2024.git
-cd personal-website
+cd oktay-2024
 ```
 
 Install the dependencies:
