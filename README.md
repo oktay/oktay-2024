@@ -76,7 +76,3 @@ If you would like to contribute, please open a pull request or submit an issue. 
 ## License
 
 This project is licensed under the MIT License. See the `LICENSE` file for more information.
-
----
-
-Feel free to customize this according to your project's specifics. Happy coding!
