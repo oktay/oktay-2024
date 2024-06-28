@@ -86,9 +86,3 @@
     @apply leading-7 [&:not(:first-child)]:mt-6;
   }
 }
-
-@layer utilities {
-  .h-full-screen {
-    @apply h-[calc(100dvh-3rem)] md:h-screen;
-  }
-}
