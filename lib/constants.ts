@@ -1,9 +1,17 @@
 export const DEFAULT_SEO = {
-  title: "Hello World",
-  description: "Personal Homepage with Next.js and DatoCMS",
+  title: "Oktay Çolakoğlu",
+  description:
+    "Frontend Developer, design enthusiast, gamer and lifelong learner",
 };
 
-export const LINKS = [
+export const PAGE_SLUG = {
+  HOME: "home",
+  EXPERIENCES: "experiences",
+  PROJECTS: "projects",
+  BOOKMARKS: "bookmarks",
+};
+
+export const NAV_LINKS = [
   {
     href: "/",
     label: "Home",

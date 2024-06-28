@@ -1,6 +1,9 @@
+/* eslint-disable jsx-a11y/alt-text */
+
 import { Image } from "react-datocms";
 
-import { formatISODate } from "@/lib/utils";
+import { cn, formatISODate } from "@/lib/utils";
+import { ExperienceType } from "@/types";
 
 import RichText from "./rich-text";
 import { Badge } from "./ui/badge";
@@ -13,26 +16,17 @@ export default function ExperienceCard({
   endDate,
   logo,
   tags,
-}: {
-  company: string;
-  workTitle: string;
-  description: string;
-  startDate: string;
-  endDate: string;
-  tags: string;
-  logo: {
-    responsiveImage: any;
-  };
-}) {
+  className,
+  ...props
+}: ExperienceType & React.HTMLProps<HTMLDivElement>) {
   const formattedStartDate = formatISODate(startDate);
   const formattedEndDate = endDate ? formatISODate(endDate) : "Present";
 
   return (
-    <div className="flex gap-6 relative">
+    <div className={cn("flex gap-6 relative", className)} {...props}>
       <div className="aspect-square w-12 h-12 sticky top-2 z-10">
-        {/* eslint-disable-next-line jsx-a11y/alt-text */}
         <Image
-          data={logo.responsiveImage}
+          data={logo.image}
           className="rounded-full relative z-10 border"
         />
       </div>
@@ -50,14 +44,9 @@ export default function ExperienceCard({
         <RichText content={description} />
 
         <div className="flex flex-wrap gap-2 mt-4">
-          {tags
-            .split(",")
-            .filter(Boolean)
-            .map((tag) => (
-              <Badge key={tag} variant="outline">
-                {tag}
-              </Badge>
-            ))}
+          {tags.map(({ name }) => (
+            <Badge key={name}>{name}</Badge>
+          ))}
         </div>
       </div>
     </div>

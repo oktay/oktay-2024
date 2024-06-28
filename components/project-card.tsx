@@ -1,29 +1,26 @@
+/* eslint-disable jsx-a11y/alt-text */
+
 import { ArrowUpRight } from "lucide-react";
 import { Image } from "react-datocms";
+
+import { ProjectType } from "@/types";
 
 import RichText from "./rich-text";
 import { Badge } from "./ui/badge";
 
 export default function ProjectCard({
   title,
-  description,
   url,
-  image,
+  description,
+  thumbnail,
   tags,
-}: {
-  id: string;
-  title: string;
-  description: any;
-  url: string;
-  image: any;
-  tags: string;
-}) {
+  ...props
+}: ProjectType & React.HTMLProps<HTMLDivElement>) {
   return (
-    <div>
+    <div {...props}>
       <a href={url} target="_blank" className="col-span-2">
-        {/* eslint-disable-next-line jsx-a11y/alt-text */}
         <Image
-          data={image.responsiveImage}
+          data={thumbnail.image}
           className="rounded hover:opacity-90 transition"
         />
       </a>
@@ -35,18 +32,16 @@ export default function ProjectCard({
           <RichText content={description} />
         </div>
 
-        <div className="mt-2 flex items-center gap-1">
+        <div className="flex items-center gap-1">
           <a href={url} target="_blank" className="text-sm">
             {url.replace(/https?:\/\//, "")}
           </a>
           <ArrowUpRight size={14} />
         </div>
 
-        <div className="flex gap-2 mt-4">
-          {tags.split(",").map((tag) => (
-            <Badge key={tag} variant="outline">
-              {tag}
-            </Badge>
+        <div className="flex flex-wrap gap-2 mt-6">
+          {tags.map((tag) => (
+            <Badge key={tag.name}>{tag.name}</Badge>
           ))}
         </div>
       </div>

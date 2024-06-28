@@ -1,25 +1,27 @@
-import { toNextMetadata } from "react-datocms";
-
 import ExperienceList from "@/components/experience-list";
+import MainHero from "@/components/main-hero";
 import MainPage from "@/components/main-page";
-import RichText from "@/components/rich-text";
-import { performRequest } from "@/lib/datocms";
-import { experiencesQuery, experiencesSeoQuery } from "@/lib/query";
+import { PAGE_SLUG } from "@/lib/constants";
+import { getMetadata, getPageData } from "@/lib/datocms";
 
 export async function generateMetadata() {
-  const response = await performRequest({ query: experiencesSeoQuery });
-  return toNextMetadata([...response.data.experiences.seo]);
+  return await getMetadata(PAGE_SLUG.EXPERIENCES);
 }
 
 export default async function Experiences() {
-  const { data } = await performRequest({ query: experiencesQuery });
+  const page = await getPageData(PAGE_SLUG.EXPERIENCES);
 
   return (
     <MainPage>
-      <RichText content={data.page.description} />
-      <div className="mt-10">
-        <ExperienceList experiences={data.experiences} />
-      </div>
+      <MainHero
+        title={page.title}
+        description={page.description}
+        links={page.links}
+      />
+
+      {page.content.experiences && (
+        <ExperienceList experiences={page.content.experiences} />
+      )}
     </MainPage>
   );
 }

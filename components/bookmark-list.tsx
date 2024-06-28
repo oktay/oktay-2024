@@ -1,24 +1,28 @@
-import { groupBookmarkByDay } from "@/lib/utils";
+import { cn, groupBookmarkByDay } from "@/lib/utils";
+import { BookmarkType } from "@/types";
 
 import BookmarkCard from "./bookmark-card";
 
-export default function BookmarksList({ bookmarks }: { bookmarks: any }) {
+export default function BookmarksList({
+  bookmarks,
+  className,
+  ...props
+}: {
+  bookmarks: BookmarkType[];
+} & React.HTMLProps<HTMLDivElement>) {
   const { groupedBookmarks, dates } = groupBookmarkByDay(bookmarks);
 
   return (
-    <div className="flex flex-col gap-24">
+    <div className={cn("flex flex-col gap-20", className)} {...props}>
       {dates.map((date) => (
-        <div
-          key={date}
-          className="flex flex-col lg:flex-row gap-8 lg:gap-16 relative"
-        >
-          <strong className="block font-medium text-muted-foreground lg:sticky lg:top-4 lg:h-full min-w-[100px]">
+        <div key={date} className="flex flex-col lg:flex-col gap-8 relative">
+          <strong className="block font-medium text-muted-foreground">
             {date}
           </strong>
 
           <div className="relative flex flex-col gap-8 flex-1">
             {groupedBookmarks[date].map((bookmark: any) => (
-              <BookmarkCard key={bookmark.id} {...bookmark} />
+              <BookmarkCard key={bookmark.id} bookmark={bookmark} />
             ))}
           </div>
         </div>

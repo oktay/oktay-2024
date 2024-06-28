@@ -7,10 +7,12 @@ import {
   SparklesIcon,
   TentIcon,
 } from "lucide-react";
-import Link from "next/link";
+import Link, { LinkProps } from "next/link";
 import { usePathname } from "next/navigation";
 
-import { Button } from "./ui/button";
+import { cn } from "@/lib/utils";
+
+import { Button, ButtonProps } from "./ui/button";
 
 const iconMap: Record<string, any> = {
   Home: <TentIcon size={16} />,
@@ -22,20 +24,24 @@ const iconMap: Record<string, any> = {
 export default function NavLink({
   href,
   label,
+  className,
+  asChild = true,
+  ...props
 }: {
   href: string;
   label: string;
-}) {
+} & ButtonProps &
+  LinkProps) {
   const pathname = usePathname();
   const isActive = pathname === href;
   const isExternal = href.includes("//");
 
   return (
     <Button
-      key={href}
       variant={isActive ? "default" : "ghost"}
-      className="w-full justify-start text-left gap-4"
-      asChild
+      className={cn("w-full justify-start text-left gap-4", className)}
+      asChild={asChild}
+      {...props}
     >
       <Link href={href} target={isExternal ? "_blank" : ""}>
         {iconMap[label]} {label}

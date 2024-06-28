@@ -21,49 +21,50 @@ export const metaTagsFragment = `
   }
 `;
 
-export const authorFragment = `
-  fragment authorFragment on HeroRecord {
-    name
-    job
-    profilePicture {
-      responsiveImage(imgixParams: { w: 40, h: 40 }) {
-        ...responsiveImageFragment
-      }
-    }
+export const linkFragment = `
+  fragment linkFragment on LinkRecord {
+    link
+    title
+    variant
   }
-  ${responsiveImageFragment}
 `;
 
 export const experienceFragment = `
-  fragment experienceFragment on ExperienceRecord {
-    id
-    company
-    workTitle
-    description
-    startDate
-    endDate
-    tags
-    logo {
-      responsiveImage(imgixParams: { w: 48, h: 48 }) {
-        ...responsiveImageFragment
+fragment experienceFragment on ExperienceContentRecord {
+    experiences {
+      id
+      company
+      description
+      workTitle
+      startDate
+      endDate
+      tags {
+        name
+      }
+      logo {
+        image: responsiveImage {
+          ...responsiveImageFragment
+        }
       }
     }
   }
-  ${responsiveImageFragment}
 `;
 
 export const projectFragment = `
-  fragment projectFragment on ProjectRecord {
-    id
-    title
-    description
-    url
-    tags
-    image {
-      responsiveImage {
-        ...responsiveImageFragment
+  fragment projectFragment on ProjectContentRecord {
+    projects {
+      id
+      title
+      description
+      tags {
+        name
+      }
+      url
+      thumbnail {
+        image: responsiveImage {
+          ...responsiveImageFragment
+        }
       }
     }
   }
-  ${responsiveImageFragment}
 `;

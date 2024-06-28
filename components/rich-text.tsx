@@ -1,6 +1,9 @@
 import Markdown from "react-markdown";
 
-export default function RichText({ content }: { content: string }) {
+export default function RichText({
+  content,
+  ...props
+}: { content: string } & React.HTMLProps<HTMLDivElement>) {
   return (
     <Markdown
       components={{
@@ -11,10 +14,8 @@ export default function RichText({ content }: { content: string }) {
             target="_blank"
           />
         ),
-        h1: ({ node: _node, ...props }) => (
-          <h1 {...props} className="font-medium text-3xl" />
-        ),
       }}
+      {...props}
     >
       {content}
     </Markdown>

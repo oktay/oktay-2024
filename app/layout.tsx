@@ -23,7 +23,7 @@ export default function RootLayout({
       <body className="overflow-hidden">
         <ThemeProvider attribute="class" defaultTheme="light">
           <div className="bg-background" vaul-drawer-wrapper="">
-            <div className="flex flex-col h-[100dvh] md:flex-row">
+            <div className="flex flex-col h-full-screen md:flex-row">
               <MainHeader />
               <MainSidebar />
               <ScrollArea className="md:flex-1">{children}</ScrollArea>

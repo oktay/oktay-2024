@@ -1,30 +1,36 @@
 import { ArrowUpRightIcon, GlobeIcon } from "lucide-react";
 import Image from "next/image";
 
+import { cn } from "@/lib/utils";
+import { BookmarkType } from "@/types";
+
+import { Badge } from "./ui/badge";
+
 export default function BookmarkCard({
-  link,
-  cover,
-  title,
-  domain,
-  excerpt,
-}: {
-  link: string;
-  cover: any;
-  title: string;
-  domain: string;
-  excerpt: string;
-}) {
+  bookmark: { link, cover, title, domain, excerpt, tags },
+  className,
+  ...props
+}: { bookmark: BookmarkType } & React.HTMLProps<HTMLDivElement>) {
   return (
-    <div className="group flex flex-col md:flex-row items-start gap-4 hover-card">
+    <div
+      className={cn(
+        "group flex flex-col md:flex-row items-start gap-4 relative",
+        "before:absolute before:inset-0 md:even:before:bg-muted before:scale-105",
+        "before:scale-y-125 before:rounded",
+        className,
+      )}
+      {...props}
+    >
       <a
         href={link}
         target="_blank"
         rel="noopener noreferrer"
-        className="block aspect-[16/9] w-full relative md:w-64"
+        className="block aspect-[12/6.3] w-full relative md:w-64"
       >
         <Image
           src={cover}
           alt={title}
+          loading="lazy"
           className="hover:opacity-90 transition bg-muted rounded group-hover:shadow-xl object-cover border"
           fill
           unoptimized
@@ -39,7 +45,7 @@ export default function BookmarkCard({
           className="text-lg font-medium block"
         >
           {title}
-          <ArrowUpRightIcon className="inline align-middle ml-2" size={16} />
+          <ArrowUpRightIcon className="inline align-middle ml-1" size={16} />
         </a>
         <a
           href={link}
@@ -50,7 +56,18 @@ export default function BookmarkCard({
           <GlobeIcon className="inline align-middle mr-1" size={12} />
           {domain}
         </a>
-        <p className="text-muted-foreground text-xs !mt-2">{excerpt}</p>
+        <p
+          className="text-muted-foreground text-xs line-clamp-3 !mt-2"
+          title={excerpt}
+        >
+          {excerpt}
+        </p>
+
+        <div className="mt-4 flex flex-wrap gap-2">
+          {tags.map((tag) => (
+            <Badge key={tag}>{tag}</Badge>
+          ))}
+        </div>
       </div>
     </div>
   );

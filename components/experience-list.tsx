@@ -1,12 +1,19 @@
-import { groupExperienceByYear } from "@/lib/utils";
+import { cn, groupExperienceByYear } from "@/lib/utils";
+import { ExperienceType } from "@/types";
 
 import ExperienceCard from "./experience-card";
 
-export default function ExperienceList({ experiences }: { experiences: any }) {
+export default function ExperienceList({
+  experiences,
+  className,
+  ...props
+}: {
+  experiences: ExperienceType[];
+} & React.HTMLProps<HTMLDivElement>) {
   const { groupedExperiences, years } = groupExperienceByYear(experiences);
 
   return (
-    <div className="space-y-12">
+    <div className={cn("space-y-12", className)} {...props}>
       {years.map((year) => (
         <div
           key={year}
@@ -21,7 +28,11 @@ export default function ExperienceList({ experiences }: { experiences: any }) {
               <ExperienceCard key={experience.id} {...experience} />
             ))}
 
-            <div className="absolute top-0 left-6 w-px h-full bg-muted-foreground/20 after:w-2 after:h-2 after:bg-muted-foreground/20 after:rounded-full after:absolute after:-bottom-2 after:-left-1" />
+            <div
+              className="absolute top-0 left-6 w-px h-full bg-muted-foreground/20
+              after:w-2 after:h-2 after:bg-muted-foreground/20 after:rounded-full 
+              after:absolute after:-bottom-2 after:-left-1"
+            />
           </div>
         </div>
       ))}

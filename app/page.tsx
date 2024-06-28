@@ -1,32 +1,22 @@
-import Link from "next/link";
-import { toNextMetadata } from "react-datocms";
-
+import MainHero from "@/components/main-hero";
 import MainPage from "@/components/main-page";
-import RichText from "@/components/rich-text";
-import { Button } from "@/components/ui/button";
-import { performRequest } from "@/lib/datocms";
-import { homepageQuery, homepageSeoQuery } from "@/lib/query";
+import { PAGE_SLUG } from "@/lib/constants";
+import { getMetadata, getPageData } from "@/lib/datocms";
 
 export async function generateMetadata() {
-  const response = await performRequest({ query: homepageSeoQuery });
-  return toNextMetadata([...response.data.homepage.seo]);
+  return await getMetadata(PAGE_SLUG.HOME);
 }
 
 export default async function Home() {
-  const { data } = await performRequest({ query: homepageQuery });
+  const page = await getPageData(PAGE_SLUG.HOME);
 
   return (
     <MainPage>
-      <RichText content={data.hero.description} />
-      <div className="mt-8 flex gap-2">
-        {data.hero.buttons.map((action: any) => (
-          <Button key={action.link} variant={action.variant} asChild>
-            <Link href={action.link} target="_blank">
-              {action.title}
-            </Link>
-          </Button>
-        ))}
-      </div>
+      <MainHero
+        title={page.title}
+        description={page.description}
+        links={page.links}
+      />
     </MainPage>
   );
 }

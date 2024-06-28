@@ -1,27 +1,27 @@
-import { toNextMetadata } from "react-datocms";
-
+import MainHero from "@/components/main-hero";
 import MainPage from "@/components/main-page";
-import ProjectCard from "@/components/project-card";
-import RichText from "@/components/rich-text";
-import { performRequest } from "@/lib/datocms";
-import { projectsQuery, projectsSeoQuery } from "@/lib/query";
+import ProjectList from "@/components/project-list";
+import { PAGE_SLUG } from "@/lib/constants";
+import { getMetadata, getPageData } from "@/lib/datocms";
 
 export async function generateMetadata() {
-  const response = await performRequest({ query: projectsSeoQuery });
-  return toNextMetadata([...response.data.projects.seo]);
+  return await getMetadata(PAGE_SLUG.PROJECTS);
 }
 
 export default async function Projects() {
-  const { data } = await performRequest({ query: projectsQuery });
+  const page = await getPageData(PAGE_SLUG.PROJECTS);
 
   return (
     <MainPage>
-      <RichText content={data.page.description} />
-      <div className="mt-8 flex flex-col gap-8">
-        {data.projects.map((project: any) => (
-          <ProjectCard key={project.id} {...project} />
-        ))}
-      </div>
+      <MainHero
+        title={page.title}
+        description={page.description}
+        links={page.links}
+      />
+
+      {page.content.projects && (
+        <ProjectList projects={page.content.projects} />
+      )}
     </MainPage>
   );
 }

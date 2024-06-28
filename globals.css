@@ -88,7 +88,7 @@
 }
 
 @layer utilities {
-  .hover-card {
-    @apply relative before:absolute before:inset-0 md:before:bg-muted before:scale-105 before:scale-y-125 before:opacity-0 before:rounded hover:before:opacity-100 before:transition;
+  .h-full-screen {
+    @apply h-[calc(100dvh-3rem)] md:h-screen;
   }
 }

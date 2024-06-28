@@ -1,19 +1,26 @@
 import { GitBranch } from "lucide-react";
 
-import { LINKS, SOCIALS } from "@/lib/constants";
+import { NAV_LINKS, SOCIALS } from "@/lib/constants";
+import { cn } from "@/lib/utils";
 
 import Author from "./author";
 import { ModeToggle } from "./mode-toggle";
 import NavLink from "./nav-link";
 import { Button } from "./ui/button";
 
-export default function MainNav() {
+export default function MainNav({
+  className,
+  ...props
+}: React.HTMLProps<HTMLDivElement>) {
   return (
-    <nav className="flex flex-col gap-4 py-4 md:h-[100dvh]">
+    <nav
+      className={cn("flex flex-col gap-4 py-4 md:h-[100dvh]", className)}
+      {...props}
+    >
       <Author />
 
       <div className="flex flex-col">
-        {LINKS.map(({ href, label }) => (
+        {NAV_LINKS.map(({ href, label }) => (
           <NavLink key={href} href={href} label={label} />
         ))}
       </div>

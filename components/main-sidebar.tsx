@@ -1,10 +1,18 @@
-import { ScrollArea } from "@radix-ui/react-scroll-area";
+import { ScrollArea, ScrollAreaProps } from "@radix-ui/react-scroll-area";
+
+import { cn } from "@/lib/utils";
 
 import MainNav from "./main-nav";
 
-export default function MainSidebar() {
+export default function MainSidebar({ className, ...props }: ScrollAreaProps) {
   return (
-    <ScrollArea className="hidden md:block md:w-[240px] lg:w-[320px] md:border-r bg-muted/20">
+    <ScrollArea
+      className={cn(
+        "hidden md:block w-[240px] lg:w-[320px] border-r bg-muted/20",
+        className,
+      )}
+      {...props}
+    >
       <div className="px-2">
         <MainNav />
       </div>
