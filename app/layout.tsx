@@ -1,5 +1,6 @@
 import "@/globals.css";
 
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
@@ -31,6 +32,7 @@ export default function RootLayout({
           </div>
         </ThemeProvider>
       </body>
+      <GoogleAnalytics gaId={process.env.NEXT_GA_ID!} />
     </html>
   );
 }

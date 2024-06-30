@@ -9,7 +9,7 @@ const options = {
     Authorization: `Bearer ${process.env.NEXT_RAINDROP_API_TOKEN}`,
   },
   next: {
-    revalidate: 60 * 60 * 12,
+    revalidate: 3600,
   },
 };
 
