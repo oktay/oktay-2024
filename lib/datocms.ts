@@ -47,17 +47,18 @@ export async function getMetadata(slug: string, includeDrafts = false) {
   return toNextMetadata(response.data.page.seo);
 }
 
-export async function getPageData(slug: string) {
+export async function getPageData(slug: string, includeDrafts = false) {
   const response = await performRequest<PageResponseType>({
     query: pageQuery,
-    variables: { slug },
+    variables: { slug, includeDrafts },
   });
   return response.data.page;
 }
 
-export async function getAuthor() {
+export async function getAuthor(includeDrafts = false) {
   const response = await performRequest<AuthorResponseType>({
     query: authorQuery,
+    variables: { includeDrafts },
   });
   return response.data.author;
 }

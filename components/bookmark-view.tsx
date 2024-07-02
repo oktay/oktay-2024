@@ -1,40 +1,29 @@
-import { TabsProps } from "@radix-ui/react-tabs";
-
-import { uniqueTags } from "@/lib/utils";
+import { PAGE_SIZE } from "@/lib/constants";
 import { CollectionType } from "@/types";
 
+import BookmarkFilter from "./bookmark-filter";
 import BookmarksList from "./bookmark-list";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
+import BookmarkPagination from "./bookmark-pagination";
 
 export default function BookmarkView({
-  collection: { items },
-  defaultValue = "all",
-  ...props
-}: { collection: CollectionType } & TabsProps) {
-  const tags = uniqueTags(items);
-  const tabs = ["all", ...tags];
-
-  function filterByTag(tag: string) {
-    return items.filter(
-      (bookmark) => tag === "all" || bookmark.tags.includes(tag),
-    );
-  }
-
+  tag,
+  collection,
+  page,
+}: {
+  tag?: string;
+  collection: CollectionType;
+  page: number;
+}) {
   return (
-    <Tabs defaultValue={defaultValue} {...props}>
-      <TabsList className="overflow-x-auto h-auto flex-wrap justify-start gap-y-2">
-        {tabs.map((tab) => (
-          <TabsTrigger key={tab} value={tab}>
-            {tab}
-          </TabsTrigger>
-        ))}
-      </TabsList>
+    <div className="space-y-12">
+      <BookmarkFilter defaultValue={decodeURIComponent(tag || "all")} />
 
-      {tabs.map((tab) => (
-        <TabsContent key={tab} value={tab} className="py-8">
-          <BookmarksList bookmarks={filterByTag(tab)} />
-        </TabsContent>
-      ))}
-    </Tabs>
+      {collection.items.length > 0 && (
+        <BookmarksList bookmarks={collection.items} />
+      )}
+      {collection.count > PAGE_SIZE && (
+        <BookmarkPagination count={collection.count} currentPage={page} />
+      )}
+    </div>
   );
 }

@@ -50,3 +50,4 @@ export const SOCIALS = [
 ];
 
 export const COLLECTION_ID = "45476851";
+export const PAGE_SIZE = 25;

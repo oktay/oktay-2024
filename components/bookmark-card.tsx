@@ -1,5 +1,6 @@
 import { ArrowUpRightIcon, GlobeIcon } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 import { BookmarkType } from "@/types";
@@ -65,7 +66,9 @@ export default function BookmarkCard({
 
         <div className="mt-4 flex flex-wrap gap-2">
           {tags.map((tag) => (
-            <Badge key={tag}>{tag}</Badge>
+            <Link key={tag} href={`/bookmarks/${encodeURIComponent(tag)}`}>
+              <Badge>{tag}</Badge>
+            </Link>
           ))}
         </div>
       </div>

@@ -72,5 +72,5 @@ export function groupBookmarkByDay(bookmarks: BookmarkType[]): {
 }
 
 export function uniqueTags(items: BookmarkType[]) {
-  return Array.from(new Set(items.flatMap((experience) => experience.tags)));
+  return Array.from(new Set(items.flatMap((item) => item.tags)));
 }

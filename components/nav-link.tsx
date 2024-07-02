@@ -33,7 +33,7 @@ export default function NavLink({
 } & ButtonProps &
   LinkProps) {
   const pathname = usePathname();
-  const isActive = pathname === href;
+  const isActive = href === "/" ? pathname === href : pathname.includes(href);
   const isExternal = href.includes("//");
 
   return (
