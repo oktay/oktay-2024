@@ -69,6 +69,7 @@ export type AuthorResponseType = {
 };
 
 export type BookmarkType = {
+  _id: string;
   link: string;
   title: string;
   cover: string;

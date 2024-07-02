@@ -8,12 +8,13 @@ import { BookmarkType } from "@/types";
 import { Badge } from "./ui/badge";
 
 export default function BookmarkCard({
-  bookmark: { link, cover, title, domain, excerpt, tags },
+  bookmark: { _id, link, cover, title, domain, excerpt, tags },
   className,
   ...props
 }: { bookmark: BookmarkType } & React.HTMLProps<HTMLDivElement>) {
   return (
     <div
+      data-id={_id}
       className={cn(
         "group flex flex-col md:flex-row items-start gap-4 relative",
         "before:absolute before:inset-0 md:even:before:bg-muted before:scale-105",

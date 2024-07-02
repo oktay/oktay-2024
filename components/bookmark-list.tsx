@@ -22,7 +22,7 @@ export default function BookmarksList({
 
           <div className="relative flex flex-col gap-8 flex-1">
             {groupedBookmarks[date].map((bookmark: any) => (
-              <BookmarkCard key={bookmark.id} bookmark={bookmark} />
+              <BookmarkCard key={bookmark._id} bookmark={bookmark} />
             ))}
           </div>
         </div>

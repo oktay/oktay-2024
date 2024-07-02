@@ -4,6 +4,7 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
+import NextTopLoader from "nextjs-toploader";
 
 import MainHeader from "@/components/main-header";
 import MainSidebar from "@/components/main-sidebar";
@@ -22,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={GeistSans.variable} suppressHydrationWarning>
       <body className="overflow-hidden">
+        <NextTopLoader />
         <ThemeProvider attribute="class" defaultTheme="light">
           <div className="bg-background" vaul-drawer-wrapper="">
             <div className="h-dvh flex flex-col md:flex-row">
