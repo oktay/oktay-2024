@@ -24,7 +24,7 @@ export default function ExperienceCard({
 
   return (
     <div className={cn("flex gap-6 relative", className)} {...props}>
-      <div className="aspect-square w-12 h-12 sticky top-2 z-10">
+      <div className="aspect-square w-12 h-12">
         <Image
           data={logo.image}
           className="rounded-full relative z-10 border"

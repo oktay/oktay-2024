@@ -1,4 +1,4 @@
-import { CollectionType } from "@/types";
+import { CollectionTagsType, CollectionType } from "@/types";
 
 import { PAGE_SIZE } from "./constants";
 
@@ -31,4 +31,11 @@ export async function getRaindropCollection(
   const path = `/raindrops/${collectionId}?sort=-created&page=${page}&perpage=${PAGE_SIZE}`;
   const search = tag ? `&search=[{ "key": "tag", "val": "${tag}" }]` : "";
   return await fetchRaindrop(`${path}${search}`);
+}
+
+export async function getRaindropCollectionTags(
+  collectionId: string,
+): Promise<CollectionTagsType> {
+  const path = `/tags/${collectionId}`;
+  return await fetchRaindrop(path);
 }

@@ -1,5 +1,4 @@
-import { GitBranch } from "lucide-react";
-
+import { Icons } from "@/components/icons";
 import { NAV_LINKS, SOCIALS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
@@ -41,7 +40,7 @@ export default function MainNav({
         <ModeToggle />
         <Button variant="outline" className="flex-1" asChild>
           <a href="//github.com/oktay/oktay-2024" target="_blank">
-            <GitBranch className="h-4 w-4 mr-2" />
+            <Icons.Github className="h-4 w-4 mr-2" />
             <span>Source code</span>
           </a>
         </Button>

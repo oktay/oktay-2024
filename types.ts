@@ -85,4 +85,13 @@ export type CollectionType = {
   collectionId: string;
 };
 
+export type CollectionTagsType = {
+  items: CollectionTagType[];
+};
+
+export type CollectionTagType = {
+  _id: string;
+  count: number;
+};
+
 export type BookmarkGroupType = Record<string, BookmarkType[]>;

@@ -1,9 +1,9 @@
 import { TabsProps } from "@radix-ui/react-tabs";
 import Link from "next/link";
 
+import { Badge } from "@/components/ui/badge";
 import { COLLECTION_ID } from "@/lib/constants";
-import { getRaindropCollection } from "@/lib/raindrop";
-import { uniqueTags } from "@/lib/utils";
+import { getRaindropCollectionTags } from "@/lib/raindrop";
 
 import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
 
@@ -11,21 +11,28 @@ export default async function BookmarkFilter({
   defaultValue = "all",
   ...props
 }: TabsProps) {
-  const collection = await getRaindropCollection(COLLECTION_ID);
-  const tabs = ["all", ...uniqueTags(collection.items)];
+  const { items } = await getRaindropCollectionTags(COLLECTION_ID);
 
-  function createTagLink(tag: string) {
-    return tag === "all"
-      ? "/bookmarks"
-      : `/bookmarks/${encodeURIComponent(tag)}`;
-  }
+  const total = items.reduce((acc, item) => acc + item.count, 0);
 
   return (
     <Tabs defaultValue={defaultValue} {...props}>
       <TabsList className="overflow-x-auto h-auto flex-wrap justify-start gap-y-2">
-        {tabs.map((tab) => (
-          <TabsTrigger key={tab} value={tab} asChild>
-            <Link href={createTagLink(tab)}>{tab}</Link>
+        <TabsTrigger value="all" asChild>
+          <Link href="/bookmarks">
+            All <Badge className="leading-none ml-2">{total}</Badge>
+          </Link>
+        </TabsTrigger>
+
+        {items.map((item) => (
+          <TabsTrigger key={item._id} value={item._id} asChild>
+            <Link
+              href={`/bookmarks/${encodeURIComponent(item._id)}`}
+              className="capitalize"
+            >
+              {item._id}{" "}
+              <Badge className="leading-none ml-2">{item.count}</Badge>
+            </Link>
           </TabsTrigger>
         ))}
       </TabsList>
