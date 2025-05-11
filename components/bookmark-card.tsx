@@ -17,8 +17,6 @@ export default function BookmarkCard({
       data-id={_id}
       className={cn(
         "group flex flex-col md:flex-row items-start gap-4 relative",
-        "before:absolute before:inset-0 md:even:before:bg-muted before:scale-105",
-        "before:scale-y-125 before:rounded",
         className,
       )}
       {...props}

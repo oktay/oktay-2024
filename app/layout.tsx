@@ -7,8 +7,6 @@ import { ThemeProvider } from "next-themes";
 import NextTopLoader from "nextjs-toploader";
 
 import MainHeader from "@/components/main-header";
-import MainSidebar from "@/components/main-sidebar";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { DEFAULT_SEO } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -22,15 +20,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={GeistSans.variable} suppressHydrationWarning>
-      <body className="overflow-hidden">
+      <body>
         <NextTopLoader />
-        <ThemeProvider attribute="class" defaultTheme="light">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           <div className="bg-background" vaul-drawer-wrapper="">
-            <div className="h-dvh flex flex-col md:flex-row">
-              <MainHeader />
-              <MainSidebar />
-              <ScrollArea className="md:flex-1">{children}</ScrollArea>
-            </div>
+            <MainHeader />
+            <div>{children}</div>
           </div>
         </ThemeProvider>
       </body>

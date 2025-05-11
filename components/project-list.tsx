@@ -9,7 +9,7 @@ export default function ProjectList({
   ...props
 }: { projects: ProjectType[] } & React.HTMLProps<HTMLDivElement>) {
   return (
-    <div className={cn("flex flex-col gap-8", className)} {...props}>
+    <div className={cn("grid gap-8 md:grid-cols-2", className)} {...props}>
       {projects.map((project: any) => (
         <ProjectCard key={project.id} {...project} />
       ))}

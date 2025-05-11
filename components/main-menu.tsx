@@ -15,7 +15,7 @@ export default function MainMenu() {
   return (
     <Drawer>
       <DrawerTrigger asChild>
-        <Button variant="ghost" size="icon">
+        <Button variant="ghost" size="icon" className="md:hidden -ml-4">
           <span className="sr-only">Open menu</span>
           <MenuIcon size={24} />
         </Button>

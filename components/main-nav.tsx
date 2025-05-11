@@ -13,7 +13,7 @@ export default function MainNav({
 }: React.HTMLProps<HTMLDivElement>) {
   return (
     <nav
-      className={cn("flex flex-col gap-4 py-4 md:h-[100dvh]", className)}
+      className={cn("flex flex-col gap-4 py-4 w-full", className)}
       {...props}
     >
       <Author />
@@ -40,7 +40,7 @@ export default function MainNav({
         <ModeToggle />
         <Button variant="outline" className="flex-1" asChild>
           <a href="//github.com/oktay/oktay-2024" target="_blank">
-            <Icons.Github className="h-4 w-4 mr-2" />
+            <Icons.Github className="h-4 w-4 mr-2 fill-current" />
             <span>Source code</span>
           </a>
         </Button>

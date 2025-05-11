@@ -1,3 +1,4 @@
+import MainSheet from "@/components/main-sheet";
 import { cn } from "@/lib/utils";
 
 import MainMenu from "./main-menu";
@@ -8,10 +9,11 @@ export default function MainHeader({
 }: React.HTMLProps<HTMLDivElement>) {
   return (
     <header
-      className={cn("z-10 bg-background border-b md:hidden", className)}
+      className={cn("z-50 bg-background border-b sticky top-0", className)}
       {...props}
     >
-      <div className="container h-12 flex items-center -ml-2">
+      <div className="container h-12 flex items-center">
+        <MainSheet />
         <MainMenu />
       </div>
     </header>

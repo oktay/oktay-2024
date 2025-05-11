@@ -13,7 +13,7 @@ export default function MainPage({
       )}
       {...props}
     >
-      <div className="container max-w-5xl">{children}</div>
+      <div className="container">{children}</div>
     </main>
   );
 }

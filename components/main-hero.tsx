@@ -19,7 +19,9 @@ export default function MainHero({
   return (
     <section className={cn("mb-10", className)} {...props}>
       <h1 className="font-medium text-3xl">{title}</h1>
-      <RichText content={description} />
+      <div className="text-muted-foreground mt-8">
+        <RichText content={description} />
+      </div>
 
       {links.length > 0 && (
         <div className="mt-8 flex gap-2">
