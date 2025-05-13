@@ -4,9 +4,9 @@ This project is a personal website built with [Next.js](https://nextjs.org/), [T
 
 ## Screenshot
 <p float="left">
-  <img src="https://api.microlink.io/?url=https://oktaycolakoglu.com&screenshot=true&meta=false&embed=screenshot.url&type=jpeg&overlay.browser=dark&overlay.background=linear-gradient%28225deg%2C+%23FF057C+0%25%2C+%238D0B93+50%25%2C+%23321575+100%25%29" width="33%" />
-  <img src="https://api.microlink.io/?url=https://oktaycolakoglu.com/experiences&screenshot=true&meta=false&embed=screenshot.url&type=jpeg&overlay.browser=dark&overlay.background=linear-gradient%28225deg%2C+%23FF057C+0%25%2C+%238D0B93+50%25%2C+%23321575+100%25%29" width="33%" />
-  <img src="https://api.microlink.io/?url=https://oktaycolakoglu.com/projects&screenshot=true&meta=false&embed=screenshot.url&type=jpeg&overlay.browser=dark&overlay.background=linear-gradient%28225deg%2C+%23FF057C+0%25%2C+%238D0B93+50%25%2C+%23321575+100%25%29" width="33%" />
+  <img src="https://api.microlink.io/?url=https://oktaycolakoglu.com&screenshot=true&meta=false&embed=screenshot.url&type=jpeg&overlay.browser=dark&overlay.background=linear-gradient%28225deg%2C+%23FF057C+0%25%2C+%238D0B93+50%25%2C+%23321575+100%25%29" width="30%" />
+  <img src="https://api.microlink.io/?url=https://oktaycolakoglu.com/experiences&screenshot=true&meta=false&embed=screenshot.url&type=jpeg&overlay.browser=dark&overlay.background=linear-gradient%28225deg%2C+%23FF057C+0%25%2C+%238D0B93+50%25%2C+%23321575+100%25%29" width="30%" />
+  <img src="https://api.microlink.io/?url=https://oktaycolakoglu.com/projects&screenshot=true&meta=false&embed=screenshot.url&type=jpeg&overlay.browser=dark&overlay.background=linear-gradient%28225deg%2C+%23FF057C+0%25%2C+%238D0B93+50%25%2C+%23321575+100%25%29" width="30%" />
 </p>
 
 ## Features
