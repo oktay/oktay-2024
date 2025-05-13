@@ -18,8 +18,8 @@ export default function MainHero({
 } & React.HTMLProps<HTMLDivElement>) {
   return (
     <section className={cn("mb-10", className)} {...props}>
-      <h1 className="font-medium text-3xl">{title}</h1>
-      <div className="text-muted-foreground mt-8">
+      <h1 className="font-normal text-3xl">{title}</h1>
+      <div className="mt-8">
         <RichText content={description} />
       </div>
 

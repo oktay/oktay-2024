@@ -25,7 +25,7 @@ export default async function Author({
     >
       <Link href="/">
         <div className="aspect-square relative w-10 h-10">
-          <Image data={author.avatar.image} className="rounded-full" />
+          <Image data={author.avatar.image} className="rounded-sm" />
         </div>
 
         <div className="flex flex-col">

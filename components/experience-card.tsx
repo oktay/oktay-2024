@@ -25,27 +25,28 @@ export default function ExperienceCard({
   return (
     <div className={cn("flex gap-6 relative", className)} {...props}>
       <div className="aspect-square w-12 h-12">
-        <Image
-          data={logo.image}
-          className="rounded-full relative z-10 border"
-        />
+        <Image data={logo.image} className="rounded-md relative z-10 border" />
       </div>
 
       <div className="flex-1">
-        <strong className="block text-lg font-medium">{workTitle}</strong>
+        <strong className="block text-lg font-normal">{workTitle}</strong>
 
-        <div className="text-muted-foreground flex flex-col gap-2 md:flex-row">
-          <strong className="font-medium">at {company}</strong>
-          <span>
+        <div className="flex flex-col gap-2 md:flex-row font-light">
+          <strong className="font-normal">at {company}</strong>
+          <span className="text-muted-foreground">
             {formattedStartDate} &mdash; {formattedEndDate}
           </span>
         </div>
 
-        <RichText content={description} />
+        <div className="text-muted-foreground mt-4">
+          <RichText content={description} />
+        </div>
 
         <div className="flex flex-wrap gap-2 mt-4">
           {tags.map(({ name }) => (
-            <Badge key={name}>{name}</Badge>
+            <Badge variant="secondary" key={name}>
+              {name}
+            </Badge>
           ))}
         </div>
       </div>

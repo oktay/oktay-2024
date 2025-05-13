@@ -14,6 +14,12 @@ export default function RichText({
             target="_blank"
           />
         ),
+        p: ({ node: _node, ...props }) => (
+          <p
+            {...props}
+            className="text-muted-foreground text-sm md:text-base font-light"
+          />
+        ),
       }}
       {...props}
     >

@@ -21,19 +21,19 @@ export default function ProjectCard({
       <a href={url} target="_blank" className="col-span-2">
         <Image
           data={thumbnail.image}
-          className="rounded hover:opacity-90 transition"
+          className="rounded hover:opacity-70 transition"
         />
       </a>
 
       <div className="flex flex-col py-4">
-        <strong className="font-medium">{title}</strong>
+        <strong className="font-normal">{title}</strong>
 
         <div className="text-muted-foreground">
           <RichText content={description} />
         </div>
 
-        <div className="flex items-center gap-1">
-          <a href={url} target="_blank" className="text-sm">
+        <div className="flex items-center gap-1 mt-2">
+          <a href={url} target="_blank" className="text-sm font-medium">
             {url.replace(/https?:\/\//, "")}
           </a>
           <ArrowUpRight size={14} />
@@ -41,7 +41,9 @@ export default function ProjectCard({
 
         <div className="flex flex-wrap gap-2 mt-6">
           {tags.map((tag) => (
-            <Badge key={tag.name}>{tag.name}</Badge>
+            <Badge variant="secondary" key={tag.name}>
+              {tag.name}
+            </Badge>
           ))}
         </div>
       </div>
