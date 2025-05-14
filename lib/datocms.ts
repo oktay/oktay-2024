@@ -30,6 +30,9 @@ export const performRequest = async <T>({
       variables,
       includeDrafts,
     }),
+    next: {
+      revalidate: 3600,
+    },
   });
 
   if (!response.ok) {
