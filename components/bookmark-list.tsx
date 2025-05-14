@@ -13,7 +13,7 @@ export default function BookmarksList({
   const { groupedBookmarks, dates } = groupBookmarkByDay(bookmarks);
 
   return (
-    <div className={cn("grid lg:grid-cols-2 gap-8", className)} {...props}>
+    <div className={cn("flex flex-col gap-20", className)} {...props}>
       {dates.map((date) => (
         <div key={date} className="flex flex-col lg:flex-col gap-8 relative">
           <strong className="block font-medium text-muted-foreground">
