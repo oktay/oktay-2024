@@ -7,7 +7,10 @@ import { ThemeProvider } from "next-themes";
 import NextTopLoader from "nextjs-toploader";
 
 import MainHeader from "@/components/main-header";
+import MainNav from "@/components/main-nav";
 import { DEFAULT_SEO } from "@/lib/constants";
+
+const GA_ID = process.env.NEXT_GA_ID;
 
 export const metadata: Metadata = {
   ...DEFAULT_SEO,
@@ -29,12 +32,16 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="bg-background" vaul-drawer-wrapper="">
-            <MainHeader />
-            <div>{children}</div>
+            <MainHeader className="lg:hidden" />
+            <div className="lg:grid grid-cols-[300px_1fr] container gap-24">
+              <MainNav className="h-dvh sticky top-0 py-12 2xl:py-24 hidden lg:flex" />
+              <div>{children}</div>
+            </div>
           </div>
         </ThemeProvider>
       </body>
-      <GoogleAnalytics gaId={process.env.NEXT_GA_ID!} />
+
+      {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
     </html>
   );
 }

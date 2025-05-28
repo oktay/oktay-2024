@@ -13,7 +13,7 @@ export default function MainPage({
       )}
       {...props}
     >
-      <div className="container">{children}</div>
+      {children}
     </main>
   );
 }

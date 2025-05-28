@@ -24,10 +24,8 @@ export default function MainNav({
         ))}
       </div>
 
-      <hr className="mx-4" />
-
       <div className="flex flex-col">
-        <strong className="text-xs text-muted-foreground font-medium px-4 mb-2">
+        <strong className="text-xs text-muted-foreground font-medium px-4 my-4">
           Social
         </strong>
 
