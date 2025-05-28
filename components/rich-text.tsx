@@ -20,6 +20,12 @@ export default function RichText({
             className="text-muted-foreground text-sm md:text-base font-light"
           />
         ),
+        ul: ({ node: _node, ...props }) => (
+          <ul {...props} className="list-disc font-light pl-4 space-y-2 my-4" />
+        ),
+        strong: ({ node: _node, ...props }) => (
+          <strong {...props} className="font-medium" />
+        ),
       }}
       {...props}
     >
