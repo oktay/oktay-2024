@@ -1,6 +1,15 @@
 import { ResolvingMetadata } from "next";
 
 import BookmarkView from "@/components/bookmark-view";
+import MainPage from "@/components/main-page";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import { COLLECTION_ID } from "@/lib/constants";
 import { getRaindropCollection } from "@/lib/raindrop";
 
@@ -27,6 +36,37 @@ export default async function BookmarksPage({ params, searchParams }: Props) {
   );
 
   return (
-    <BookmarkView tag={params.tag} collection={collection} page={currentPage} />
+    <MainPage>
+      <Breadcrumb>
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/bookmarks">Bookmarks</BreadcrumbLink>
+          </BreadcrumbItem>
+
+          <BreadcrumbSeparator />
+
+          <BreadcrumbItem>
+            <BreadcrumbPage className="capitalize">
+              {decodeURIComponent(params.tag)}
+            </BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
+
+      <h1 className="font-normal text-3xl mb-10 capitalize mt-4">
+        {decodeURIComponent(params.tag)}
+      </h1>
+
+      <BookmarkView
+        tag={params.tag}
+        collection={collection}
+        page={currentPage}
+      />
+    </MainPage>
   );
 }

@@ -1,7 +1,7 @@
 import { ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
-import { BookmarkGroupType, BookmarkType, ExperienceType } from "@/types";
+import { BookmarkType, ExperienceType } from "@/types";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -14,10 +14,9 @@ export function formatISODate(date: string) {
   });
 }
 
-function formatDate(date: Date): string {
-  return date.toLocaleDateString("en-US", {
+export function formatMonthYear(date: string) {
+  return new Date(date).toLocaleDateString("en-US", {
     month: "short",
-    day: "2-digit",
     year: "numeric",
   });
 }
@@ -45,30 +44,30 @@ export function groupExperienceByYear(experiences: ExperienceType[]): {
   return { groupedExperiences, years };
 }
 
-export function groupBookmarkByDay(bookmarks: BookmarkType[]): {
-  groupedBookmarks: BookmarkGroupType;
-  dates: string[];
+export function groupBookmarksByMonth(bookmarks: BookmarkType[]): {
+  groupedBookmarks: Record<string, BookmarkType[]>;
+  months: string[];
 } {
-  const groupedBookmarksByDate = bookmarks.reduce(
-    (acc: BookmarkGroupType, bookmark: BookmarkType) => {
-      const formattedDate = formatDate(new Date(bookmark.created));
+  const groupedBookmarks = bookmarks.reduce(
+    (acc, bookmark) => {
+      const date = formatMonthYear(bookmark.created);
 
-      if (!acc[formattedDate]) {
-        acc[formattedDate] = [];
+      if (!acc[date]) {
+        acc[date] = [];
       }
 
-      acc[formattedDate].push(bookmark);
+      acc[date].push(bookmark);
 
       return acc;
     },
-    {},
+    {} as Record<string, BookmarkType[]>,
   );
 
-  const dates = Object.keys(groupedBookmarksByDate).sort(
+  const months = Object.keys(groupedBookmarks).sort(
     (a, b) => new Date(b).getTime() - new Date(a).getTime(),
   );
 
-  return { groupedBookmarks: groupedBookmarksByDate, dates };
+  return { groupedBookmarks, months };
 }
 
 export function uniqueTags(items: BookmarkType[]) {

@@ -66,7 +66,7 @@ export default function BookmarkCard({
         <div className="mt-4 flex flex-wrap gap-2">
           {tags.map((tag) => (
             <Link key={tag} href={`/bookmarks/${encodeURIComponent(tag)}`}>
-              <Badge>{tag}</Badge>
+              <Badge variant="secondary">{tag}</Badge>
             </Link>
           ))}
         </div>

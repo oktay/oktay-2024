@@ -17,9 +17,9 @@ export default function MainHero({
   links: LinkType[];
 } & React.HTMLProps<HTMLDivElement>) {
   return (
-    <section className={cn("mb-10", className)} {...props}>
+    <section className={cn("mb-10 mt-4", className)} {...props}>
       <h1 className="font-normal text-3xl">{title}</h1>
-      <div className="mt-8">
+      <div className="mt-4">
         <RichText content={description} />
       </div>
 
