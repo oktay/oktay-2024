@@ -4,8 +4,8 @@ import {
   ArrowUpRight,
   BookmarkIcon,
   DraftingCompassIcon,
+  HomeIcon,
   SparklesIcon,
-  TentIcon,
 } from "lucide-react";
 import Link, { LinkProps } from "next/link";
 import { usePathname } from "next/navigation";
@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils";
 import { Button, ButtonProps } from "./ui/button";
 
 const iconMap: Record<string, any> = {
-  Home: <TentIcon size={16} />,
+  Home: <HomeIcon size={16} />,
   Experiences: <SparklesIcon size={16} />,
   Projects: <DraftingCompassIcon size={16} />,
   Bookmarks: <BookmarkIcon size={16} />,
