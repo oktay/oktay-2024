@@ -1,4 +1,3 @@
-import MainSheet from "@/components/main-sheet";
 import { cn } from "@/lib/utils";
 
 import MainMenu from "./main-menu";
@@ -13,7 +12,6 @@ export default function MainHeader({
       {...props}
     >
       <div className="container h-12 flex items-center">
-        <MainSheet />
         <MainMenu />
       </div>
     </header>
