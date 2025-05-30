@@ -26,6 +26,21 @@ export default function RichText({
         strong: ({ node: _node, ...props }) => (
           <strong {...props} className="font-medium" />
         ),
+        pre: ({ node: _node, ...props }) => (
+          <pre
+            {...props}
+            className="bg-muted text-xs font-light p-4 rounded-lg my-4"
+          />
+        ),
+        h2: ({ node: _node, ...props }) => (
+          <h2
+            {...props}
+            className="text-2xl font-bold text-primary my-4 border-none"
+          />
+        ),
+        hr: ({ node: _node, ...props }) => (
+          <hr {...props} className="border-t border-muted my-8" />
+        ),
       }}
       {...props}
     >

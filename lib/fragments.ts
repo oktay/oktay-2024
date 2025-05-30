@@ -68,3 +68,31 @@ export const projectFragment = `
     }
   }
 `;
+
+export const postFragment = `
+  fragment postFragment on PostContentRecord {
+    posts {
+      id
+      title
+      content
+      slug
+      publishedAt: _firstPublishedAt
+      tags {
+        name
+      }
+    }
+  }
+`;
+
+export const postDetailFragment = `
+  fragment postDetailFragment on PostRecord {
+      id
+      title
+      content
+      slug
+      publishedAt: _firstPublishedAt
+      tags {
+        name
+      }
+    }
+`;

@@ -39,9 +39,20 @@ export type ProjectType = {
   };
 };
 
+export type PostType = {
+  id: string;
+  title: string;
+  content: string;
+  publishedAt: string;
+  slug: string;
+  tags: TagType[];
+  seo: SeoMetaTagType[];
+};
+
 export type ContentType = {
   experiences?: ExperienceType[];
   projects?: ProjectType[];
+  posts?: PostType[];
 };
 
 export type PageType = {
@@ -62,6 +73,10 @@ export type AuthorType = {
 
 export type PageResponseType = {
   page: PageType;
+};
+
+export type PostResponseType = {
+  post: PostType;
 };
 
 export type AuthorResponseType = {

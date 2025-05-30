@@ -4,6 +4,7 @@ import {
   ArrowUpRight,
   BookmarkIcon,
   DraftingCompassIcon,
+  FileIcon,
   HomeIcon,
   SparklesIcon,
 } from "lucide-react";
@@ -16,6 +17,7 @@ import { Button, ButtonProps } from "./ui/button";
 
 const iconMap: Record<string, any> = {
   Home: <HomeIcon size={16} />,
+  Posts: <FileIcon size={16} />,
   Experiences: <SparklesIcon size={16} />,
   Projects: <DraftingCompassIcon size={16} />,
   Bookmarks: <BookmarkIcon size={16} />,

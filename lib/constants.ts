@@ -9,6 +9,7 @@ export const PAGE_SLUG = {
   EXPERIENCES: "experiences",
   PROJECTS: "projects",
   BOOKMARKS: "bookmarks",
+  POSTS: "posts",
 };
 
 export const NAV_LINKS = [
@@ -23,6 +24,10 @@ export const NAV_LINKS = [
   {
     href: "/projects",
     label: "Projects",
+  },
+  {
+    href: "/posts",
+    label: "Posts",
   },
   {
     href: "/bookmarks",

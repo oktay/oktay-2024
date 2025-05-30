@@ -1,11 +1,17 @@
 import { toNextMetadata } from "react-datocms";
 
-import { AuthorResponseType, PageResponseType } from "@/types";
+import {
+  AuthorResponseType,
+  PageResponseType,
+  PostResponseType,
+} from "@/types";
 
 import {
   experienceFragment,
   linkFragment,
   metaTagsFragment,
+  postDetailFragment,
+  postFragment,
   projectFragment,
   responsiveImageFragment,
 } from "./fragments";
@@ -58,6 +64,22 @@ export async function getPageData(slug: string, includeDrafts = false) {
   return response.data.page;
 }
 
+export async function getPostMetadata(slug: string, includeDrafts = false) {
+  const response = await performRequest<PostResponseType>({
+    query: postQuery,
+    variables: { slug, includeDrafts },
+  });
+  return toNextMetadata(response.data.post.seo);
+}
+
+export async function getPostData(slug: string, includeDrafts = false) {
+  const response = await performRequest<PostResponseType>({
+    query: postQuery,
+    variables: { slug, includeDrafts },
+  });
+  return response.data.post;
+}
+
 export async function getAuthor(includeDrafts = false) {
   const response = await performRequest<AuthorResponseType>({
     query: authorQuery,
@@ -78,6 +100,9 @@ export const pageQuery = `
         ... on ProjectContentRecord {
           ...projectFragment
         }
+        ... on PostContentRecord {
+          ...postFragment
+        }
       }
       seo: _seoMetaTags {
         ...metaTagsFragment
@@ -89,9 +114,23 @@ export const pageQuery = `
   }
   ${experienceFragment}
   ${projectFragment}
+  ${postFragment}
   ${linkFragment}
   ${metaTagsFragment}
   ${responsiveImageFragment}
+`;
+
+export const postQuery = `
+  query PostQuery($slug: String) {
+    post(filter: {slug: {eq: $slug}}) {
+      ...postDetailFragment
+      seo: _seoMetaTags {
+        ...metaTagsFragment
+      }
+    }
+  }
+  ${postDetailFragment}
+  ${metaTagsFragment}
 `;
 
 export const authorQuery = `
