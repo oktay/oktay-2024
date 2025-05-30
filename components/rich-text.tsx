@@ -29,7 +29,7 @@ export default function RichText({
         pre: ({ node: _node, ...props }) => (
           <pre
             {...props}
-            className="bg-muted text-xs font-light p-4 rounded-lg my-4"
+            className="bg-muted text-xs font-light p-4 rounded-lg my-4 overflow-x-auto"
           />
         ),
         h2: ({ node: _node, ...props }) => (
