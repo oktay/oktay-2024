@@ -37,7 +37,7 @@ export const performRequest = async <T>({
       includeDrafts,
     }),
     next: {
-      revalidate: 0,
+      revalidate: false,
     },
   });
 
