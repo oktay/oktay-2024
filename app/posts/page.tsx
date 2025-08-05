@@ -1,6 +1,14 @@
 import MainHero from "@/components/main-hero";
 import MainPage from "@/components/main-page";
 import PostList from "@/components/post-list";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import { PAGE_SLUG } from "@/lib/constants";
 import { getMetadata, getPageData } from "@/lib/datocms";
 
@@ -13,6 +21,19 @@ export default async function Posts() {
 
   return (
     <MainPage>
+      <Breadcrumb>
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+
+          <BreadcrumbItem>
+            <BreadcrumbPage>Posts</BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
+
       <MainHero
         title={page.title}
         description={page.description}

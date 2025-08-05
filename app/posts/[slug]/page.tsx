@@ -1,5 +1,13 @@
 import MainPage from "@/components/main-page";
 import RichText from "@/components/rich-text";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import { getPostData, getPostMetadata } from "@/lib/datocms";
 
 export async function generateMetadata({
@@ -20,6 +28,25 @@ export default async function Posts({ params }: { params: { slug: string } }) {
 
   return (
     <MainPage>
+      <Breadcrumb>
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          </BreadcrumbItem>
+
+          <BreadcrumbSeparator />
+
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/posts">Posts</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+
+          <BreadcrumbItem>
+            <BreadcrumbPage>{post.title}</BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
+
       <h1 className="text-3xl font-medium mb-4">{post.title}</h1>
       <div className="text-muted-foreground">{date}</div>
       <RichText content={post.content} />
