@@ -1,8 +1,10 @@
+import Image from "next/image";
 import Markdown from "react-markdown";
+
+import { cn, isImageOnlyParagraph } from "@/lib/utils";
 
 export default function RichText({
   content,
-  ...props
 }: { content: string } & React.HTMLProps<HTMLDivElement>) {
   return (
     <Markdown
@@ -14,14 +16,22 @@ export default function RichText({
             target="_blank"
           />
         ),
-        p: ({ node: _node, ...props }) => (
+        p: ({ node, ...props }) => (
           <p
             {...props}
-            className="text-muted-foreground text-sm md:text-base font-light"
+            className={cn(
+              isImageOnlyParagraph(node)
+                ? "flex gap-2"
+                : "text-sm md:text-base font-light",
+              props.className,
+            )}
           />
         ),
         ul: ({ node: _node, ...props }) => (
-          <ul {...props} className="list-disc font-light pl-4 space-y-2 my-4" />
+          <ul
+            {...props}
+            className="list-disc font-light pl-4 space-y-2 my-4 list-inside"
+          />
         ),
         strong: ({ node: _node, ...props }) => (
           <strong {...props} className="font-medium" />
@@ -41,8 +51,30 @@ export default function RichText({
         hr: ({ node: _node, ...props }) => (
           <hr {...props} className="border-t border-muted my-8" />
         ),
+        img: ({ node: _node, ...props }) => {
+          if (!props.src) {
+            return null;
+          }
+
+          return (
+            <span className="relative block h-64 w-full md:h-72">
+              <Image
+                src={props.src}
+                className="rounded-lg border border-muted object-cover"
+                alt={props.alt || "Image"}
+                fill
+                sizes="(min-width: 768px) 50vw, 100vw"
+              />
+            </span>
+          );
+        },
+        blockquote: ({ node: _node, ...props }) => (
+          <blockquote
+            {...props}
+            className="border-l-2 border-muted-foreground pl-4 italic text-muted-foreground my-4"
+          />
+        ),
       }}
-      {...props}
     >
       {content}
     </Markdown>

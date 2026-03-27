@@ -73,3 +73,21 @@ export function groupBookmarksByMonth(bookmarks: BookmarkType[]): {
 export function uniqueTags(items: BookmarkType[]) {
   return Array.from(new Set(items.flatMap((item) => item.tags)));
 }
+
+export function isImageOnlyParagraph(node: any) {
+  if (!node?.children?.length) {
+    return false;
+  }
+
+  return node.children.every((child: any) => {
+    if (child.type === "element") {
+      return child.tagName === "img";
+    }
+
+    if (child.type === "text") {
+      return child.value.trim() === "";
+    }
+
+    return false;
+  });
+}
