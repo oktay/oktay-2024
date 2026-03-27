@@ -24,5 +24,7 @@ jobs:
             cd oktay-2024
             git pull origin main
             npm install
+            pm2 stop oktay || true
+            rm -rf .next
             npm run build
-            pm2 restart oktay
+            pm2 start oktay
