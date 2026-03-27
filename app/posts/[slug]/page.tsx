@@ -1,5 +1,5 @@
 import MainPage from "@/components/main-page";
-import RichText from "@/components/rich-text";
+import PostStructuredText from "@/components/structured-text";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -47,9 +47,10 @@ export default async function Posts({ params }: { params: { slug: string } }) {
         </BreadcrumbList>
       </Breadcrumb>
 
-      <h1 className="text-3xl font-medium mb-4">{post.title}</h1>
+      <h1 className="text-3xl font-medium my-4">{post.title}</h1>
       <div className="text-muted-foreground">{date}</div>
-      <RichText content={post.content} />
+
+      <PostStructuredText data={post.content} />
     </MainPage>
   );
 }

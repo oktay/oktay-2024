@@ -131,6 +131,7 @@ export const postQuery = `
   }
   ${postDetailFragment}
   ${metaTagsFragment}
+  ${responsiveImageFragment}
 `;
 
 export const authorQuery = `

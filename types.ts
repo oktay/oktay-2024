@@ -1,6 +1,7 @@
 import {
   ResponsiveImageType,
   SeoMetaTag as SeoMetaTagType,
+  StructuredTextGraphQlResponse,
 } from "react-datocms";
 
 import { ButtonProps } from "./components/ui/button";
@@ -39,10 +40,22 @@ export type ProjectType = {
   };
 };
 
+export type ImageBlockRecord = {
+  __typename: "ImageBlockRecord";
+  id: string;
+  images: Array<{
+    __typename: string;
+    id: string;
+    alt: string;
+    title: string;
+    responsiveImage: ResponsiveImageType;
+  }>;
+};
+
 export type PostType = {
   id: string;
   title: string;
-  content: string;
+  content: StructuredTextGraphQlResponse<ImageBlockRecord>;
   publishedAt: string;
   slug: string;
   tags: TagType[];

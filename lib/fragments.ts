@@ -74,7 +74,6 @@ export const postFragment = `
     posts {
       id
       title
-      content
       slug
       publishedAt: _firstPublishedAt
       tags {
@@ -88,7 +87,24 @@ export const postDetailFragment = `
   fragment postDetailFragment on PostRecord {
       id
       title
-      content
+      content {
+        value
+        blocks {
+          __typename
+          id
+          ... on ImageBlockRecord {
+            images {
+              __typename
+              id
+              alt
+              title
+              responsiveImage {
+                ...responsiveImageFragment
+              }
+            }
+          }
+        }
+      }
       slug
       publishedAt: _firstPublishedAt
       tags {
