@@ -11,7 +11,7 @@ export default function ProjectList({
   return (
     <div className={cn("grid gap-8 md:grid-cols-2", className)} {...props}>
       {projects.map((project) => (
-        <ProjectCard key={project.id} {...project} />
+        <ProjectCard key={project.id} className="h-full" {...project} />
       ))}
     </div>
   );

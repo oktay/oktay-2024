@@ -74,6 +74,9 @@ export const postFragment = `
     posts {
       id
       title
+      content {
+        value
+      }
       slug
       publishedAt: _firstPublishedAt
       tags {

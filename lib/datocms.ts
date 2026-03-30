@@ -4,6 +4,7 @@ import {
   AuthorResponseType,
   PageResponseType,
   PostResponseType,
+  PostSiblingsResponseType,
 } from "@/types";
 
 import {
@@ -45,7 +46,18 @@ export const performRequest = async <T>({
     throw new Error(`${response.status} ${response.statusText}`);
   }
 
-  return await response.json();
+  const payload = await response.json();
+
+  if (payload.errors?.length) {
+    const details = payload.errors
+      .map((error: { message?: string }) => error.message)
+      .filter(Boolean)
+      .join(" | ");
+
+    throw new Error(details || "DatoCMS GraphQL request failed");
+  }
+
+  return payload;
 };
 
 export async function getMetadata(slug: string, includeDrafts = false) {
@@ -80,6 +92,19 @@ export async function getPostData(slug: string, includeDrafts = false) {
   return response.data.post;
 }
 
+export async function getPostSiblings(
+  slug: string,
+  firstPublishedAt: string,
+  includeDrafts = false,
+) {
+  const response = await performRequest<PostSiblingsResponseType>({
+    query: postSiblingsQuery,
+    variables: { slug, firstPublishedAt, includeDrafts },
+  });
+
+  return response.data;
+}
+
 export async function getAuthor(includeDrafts = false) {
   const response = await performRequest<AuthorResponseType>({
     query: authorQuery,
@@ -92,7 +117,37 @@ export const pageQuery = `
   query PageQuery($slug: String) {
     page(filter: {slug: {eq: $slug}}) {
       title
-      description
+      description {
+        value
+        blocks {
+          ... on ImageBlockRecord {
+            __typename
+            id
+            images {
+              __typename
+              id
+              alt
+              title
+              responsiveImage {
+                ...responsiveImageFragment
+              }
+            }
+          }
+          ... on HeroImageRecord {
+            __typename
+            id
+            title
+            image {
+              responsiveImage {
+                ...responsiveImageFragment
+              }
+            }
+          }
+        }
+      }
+      highlights {
+        title
+      }
       content {
         ... on ExperienceContentRecord {
           ...experienceFragment
@@ -147,4 +202,29 @@ export const authorQuery = `
     }
   }
   ${responsiveImageFragment}
+`;
+
+export const postSiblingsQuery = `
+  query PostSiblingsQuery($slug: String, $firstPublishedAt: DateTime) {
+    previous: post(
+      orderBy: _firstPublishedAt_DESC
+      filter: {
+        _firstPublishedAt: { lt: $firstPublishedAt }
+        slug: { neq: $slug }
+      }
+    ) {
+      slug
+      title
+    }
+    next: post(
+      orderBy: _firstPublishedAt_ASC
+      filter: {
+        _firstPublishedAt: { gt: $firstPublishedAt }
+        slug: { neq: $slug }
+      }
+    ) {
+      slug
+      title
+    }
+  }
 `;

@@ -40,13 +40,23 @@ export default function NavLink({
 
   return (
     <Button
-      variant={isActive ? "default" : "ghost"}
-      className={cn("w-full justify-start text-left gap-4", className)}
+      variant="ghost"
+      className={cn(
+        "w-full justify-start gap-4 rounded-xl border border-transparent px-3 text-left",
+        "transition-all duration-200 ease-out",
+        isActive
+          ? "border-border/80 bg-secondary/38 text-foreground supports-[backdrop-filter]:bg-secondary/24 backdrop-blur-md shadow-[inset_0_1px_0_hsl(var(--foreground)/0.05)]"
+          : "text-muted-foreground hover:text-foreground hover:border-border/70 hover:bg-secondary/30 supports-[backdrop-filter]:hover:bg-secondary/20 hover:backdrop-blur-sm",
+        className,
+      )}
       asChild={asChild}
       {...props}
     >
       <Link href={href} target={isExternal ? "_blank" : ""}>
-        {iconMap[label]} {label}
+        <span className={cn("transition-colors", isActive && "text-accent")}>
+          {iconMap[label]}
+        </span>{" "}
+        {label}
         {isExternal && <ArrowUpRight size={14} className="ml-auto" />}
       </Link>
     </Button>

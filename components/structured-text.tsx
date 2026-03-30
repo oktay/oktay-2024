@@ -13,15 +13,16 @@ import {
   isThematicBreak,
 } from "datocms-structured-text-utils";
 import {
-  Image,
   renderMarkRule,
   renderNodeRule,
   StructuredText,
   type StructuredTextGraphQlResponse,
 } from "react-datocms";
 
-import type { ImageBlockRecord } from "@/types";
+import type { PageDescriptionBlock } from "@/types";
 
+import StructuredTextHeroImageBlock from "./structured-text-hero-image-block";
+import StructuredTextImageBlock from "./structured-text-image-block";
 import {
   Anchor,
   Blockquote,
@@ -35,12 +36,12 @@ import {
 } from "./typography";
 
 type Props = {
-  data: StructuredTextGraphQlResponse<ImageBlockRecord>;
+  data: StructuredTextGraphQlResponse<PageDescriptionBlock>;
 };
 
 export default function PostStructuredText({ data }: Props) {
   return (
-    <StructuredText
+    <StructuredText<PageDescriptionBlock>
       data={data}
       customMarkRules={[
         renderMarkRule("code", ({ children, key }) => (
@@ -81,18 +82,17 @@ export default function PostStructuredText({ data }: Props) {
           <ThematicBreak key={key} />
         )),
       ]}
-      renderBlock={({ record }) => (
-        <div className="my-6 flex gap-4">
-          {record.images.map((image) => (
-            <Image
-              key={image.id}
-              data={image.responsiveImage}
-              className="rounded-lg border border-border object-cover"
-              pictureClassName="object-cover"
-            />
-          ))}
-        </div>
-      )}
+      renderBlock={({ record }) => {
+        if (record.__typename === "HeroImageRecord") {
+          return <StructuredTextHeroImageBlock record={record} />;
+        }
+
+        if (record.__typename === "ImageBlockRecord") {
+          return <StructuredTextImageBlock record={record} />;
+        }
+
+        return null;
+      }}
     />
   );
 }

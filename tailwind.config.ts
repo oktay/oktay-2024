@@ -72,8 +72,8 @@ const config = {
           to: { height: "0" },
         },
         "page-scale-in": {
-          from: { transform: "scale(0.95)", opacity: "0" },
-          to: { transform: "scale(1)", opacity: "1" },
+          from: { transform: "translateY(6px)", opacity: "0" },
+          to: { transform: "translateY(0)", opacity: "1" },
         },
       },
       animation: {

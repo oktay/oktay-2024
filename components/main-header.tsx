@@ -8,7 +8,10 @@ export default function MainHeader({
 }: React.HTMLProps<HTMLDivElement>) {
   return (
     <header
-      className={cn("z-50 bg-background border-b sticky top-0", className)}
+      className={cn(
+        "z-50 bg-background/75 border-b border-border/70 sticky top-0 backdrop-blur-sm",
+        className,
+      )}
       {...props}
     >
       <div className="container h-12 flex items-center">

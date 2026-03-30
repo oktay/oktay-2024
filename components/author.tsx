@@ -20,17 +20,23 @@ export default async function Author({
     <Button
       variant={variant}
       asChild={asChild}
-      className={cn("w-full justify-start text-left gap-2 py-8", className)}
+      className={cn(
+        "w-full justify-start gap-3 rounded-xl border border-border/70 bg-card/30 py-9 text-left backdrop-blur-md supports-[backdrop-filter]:bg-card/20 hover:border-border/85 hover:bg-card/40 supports-[backdrop-filter]:hover:bg-card/28",
+        className,
+      )}
       {...props}
     >
       <Link href="/">
         <div className="aspect-square relative w-10 h-10">
-          <Image data={author.avatar.image} className="rounded-sm" />
+          <Image
+            data={author.avatar.image}
+            className="rounded-md border border-border/70"
+          />
         </div>
 
         <div className="flex flex-col">
-          <span>{author.name}</span>
-          <span className="text-muted-foreground">{author.title}</span>
+          <span className="font-medium">{author.name}</span>
+          <span className="text-muted-foreground text-xs">{author.title}</span>
         </div>
       </Link>
     </Button>

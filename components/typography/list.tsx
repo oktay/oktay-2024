@@ -11,7 +11,7 @@ export function List({ ordered, className, ...props }: ListProps) {
       {...props}
       className={cn(
         ordered ? "list-decimal" : "list-disc",
-        "text-[15px] font-light pl-6 space-y-1.5 my-3",
+        "text-[15px] font-light pl-6 space-y-2 my-3",
         className,
       )}
     />

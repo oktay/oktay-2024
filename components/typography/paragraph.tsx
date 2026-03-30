@@ -7,7 +7,10 @@ export default function Paragraph({
   return (
     <p
       {...props}
-      className={cn("text-[15px] font-light leading-7 my-3", className)}
+      className={cn(
+        "text-[15px] font-light leading-7 md:leading-8 my-3",
+        className,
+      )}
     />
   );
 }

@@ -16,6 +16,21 @@ export type TagType = {
   name: string;
 };
 
+export type HighlightType = {
+  title: string;
+};
+
+export type HeroImageRecord = {
+  __typename: "HeroImageRecord";
+  id: string;
+  title: string;
+  image: {
+    responsiveImage: ResponsiveImageType;
+  };
+};
+
+export type PageDescriptionBlock = ImageBlockRecord | HeroImageRecord;
+
 export type ExperienceType = {
   id: string;
   company: string;
@@ -70,8 +85,9 @@ export type ContentType = {
 
 export type PageType = {
   title: string;
-  description: string;
+  description: StructuredTextGraphQlResponse<PageDescriptionBlock>;
   content: ContentType;
+  highlights?: HighlightType[];
   links: LinkType[];
   seo: SeoMetaTagType[];
 };
@@ -90,6 +106,16 @@ export type PageResponseType = {
 
 export type PostResponseType = {
   post: PostType;
+};
+
+export type PostNavItemType = {
+  slug: string;
+  title: string;
+};
+
+export type PostSiblingsResponseType = {
+  previous: PostNavItemType | null;
+  next: PostNavItemType | null;
 };
 
 export type AuthorResponseType = {

@@ -24,18 +24,24 @@ export default function RootLayout({
   return (
     <html lang="en" className={GeistSans.variable} suppressHydrationWarning>
       <body>
-        <NextTopLoader />
+        <NextTopLoader color="hsl(var(--accent))" />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          <div className="bg-background" vaul-drawer-wrapper="">
+          <div className="min-h-dvh" vaul-drawer-wrapper="">
             <MainHeader className="lg:hidden" />
             <div className="lg:grid grid-cols-[300px_1fr] container gap-24">
               <MainNav className="h-dvh sticky top-0 py-12 2xl:py-24 hidden lg:flex" />
-              <div>{children}</div>
+              <div className="relative min-w-0">
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-background/35 via-background/15 to-background/30 [mask-image:radial-gradient(120%_88%_at_50%_0%,black_0%,transparent_88%)]"
+                />
+                <div className="relative z-10">{children}</div>
+              </div>
             </div>
           </div>
         </ThemeProvider>

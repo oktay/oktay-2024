@@ -1,14 +1,25 @@
 "use client";
 
 import { CircleAlert } from "lucide-react";
+import Link from "next/link";
 
-export default function ErrorPage() {
+import StateCard from "@/components/state-card";
+import { Button } from "@/components/ui/button";
+
+export default function ErrorPage({ reset }: { reset: () => void }) {
   return (
-    <div className="flex flex-col items-center justify-center h-[calc(100dvh-3rem)] md:h-screen bg-muted text-muted-foreground/30">
-      <CircleAlert className="w-16 h-16" />
-      <h1 className="mt-4 text-2xl font-semibold text-center">
-        Something went wrong
-      </h1>
-    </div>
+    <StateCard
+      title="Something went wrong"
+      description="An unexpected error occurred while loading this page."
+      icon={<CircleAlert className="h-7 w-7 text-accent" />}
+      actions={
+        <div className="flex items-center justify-center gap-2">
+          <Button onClick={reset}>Try again</Button>
+          <Button variant="outline" asChild>
+            <Link href="/">Go home</Link>
+          </Button>
+        </div>
+      }
+    />
   );
 }

@@ -13,24 +13,24 @@ export default function ExperienceList({
   const { groupedExperiences, years } = groupExperienceByYear(experiences);
 
   return (
-    <div className={cn("space-y-12", className)} {...props}>
+    <div className={cn("space-y-10", className)} {...props}>
       {years.map((year) => (
         <div
           key={year}
           className="flex flex-col lg:flex-row gap-8 lg:gap-16 relative"
         >
-          <strong className="block text-xl font-light md:sticky md:top-4 h-full">
+          <strong className="block text-lg font-light text-muted-foreground/85 md:sticky md:top-6 h-full">
             {year}
           </strong>
 
-          <div className="relative flex flex-col gap-24">
+          <div className="relative flex flex-col gap-20">
             {groupedExperiences[year].map((experience: any) => (
               <ExperienceCard key={experience.id} {...experience} />
             ))}
 
             <div
-              className="absolute top-0 left-6 w-px h-full bg-muted-foreground/20
-              after:w-2 after:h-2 after:bg-muted-foreground/20 after:rounded-full 
+              className="absolute top-0 bottom-8 left-6 w-px bg-border/90
+              after:w-2 after:h-2 after:bg-accent/65 after:rounded-full 
               after:absolute after:-bottom-2 after:-left-1"
             />
           </div>

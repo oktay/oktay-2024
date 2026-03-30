@@ -30,6 +30,7 @@ export default async function Home() {
         title={page.title}
         description={page.description}
         links={page.links}
+        highlights={page.highlights}
       />
     </MainPage>
   );

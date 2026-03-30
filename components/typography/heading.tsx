@@ -1,3 +1,7 @@
+import type { HTMLAttributes } from "react";
+
+import { slugifyHeading } from "@/lib/post-utils";
+import { extractTextFromReactChildren } from "@/lib/react-node-utils";
 import { cn } from "@/lib/utils";
 
 const styles: Record<number, string> = {
@@ -9,11 +13,22 @@ const styles: Record<number, string> = {
   6: "text-sm font-medium mt-4 mb-1",
 };
 
-type Props = React.HTMLAttributes<HTMLHeadingElement> & {
+type Props = HTMLAttributes<HTMLHeadingElement> & {
   level: 1 | 2 | 3 | 4 | 5 | 6;
 };
 
 export default function Heading({ level, className, ...props }: Props) {
   const Tag = `h${level}` as const;
-  return <Tag {...props} className={cn(styles[level], className)} />;
+  const text = extractTextFromReactChildren(props.children);
+  const generatedId = props.id || (text ? slugifyHeading(text) : undefined);
+  const shouldTrackInToc = level === 2 || level === 3;
+
+  return (
+    <Tag
+      {...props}
+      id={generatedId}
+      data-toc={shouldTrackInToc ? "true" : undefined}
+      className={cn(styles[level], "scroll-mt-24", className)}
+    />
+  );
 }
