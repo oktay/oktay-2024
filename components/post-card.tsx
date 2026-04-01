@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { TableCell, TableRow } from "@/components/ui/table";
-import { calculateReadingMinutes, toPlainText } from "@/lib/post-utils";
+import { calculateReadingMinutes, toPlainText } from "@/lib/utils";
 import { PostType } from "@/types";
 
 export default function PostCard({

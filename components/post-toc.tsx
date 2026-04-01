@@ -1,7 +1,7 @@
 "use client";
 
-import { useActiveHeading } from "@/lib/post-hooks";
-import { TocHeading } from "@/lib/post-utils";
+import { useActiveHeading } from "@/lib/hooks";
+import { type TocHeading } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 
 export default function PostToc({ headings }: { headings: TocHeading[] }) {

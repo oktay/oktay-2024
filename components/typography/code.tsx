@@ -3,8 +3,7 @@
 import React from "react";
 
 import { useClipboardCopy } from "@/lib/hooks";
-import { extractCodeText } from "@/lib/react-node-utils";
-import { cn } from "@/lib/utils";
+import { cn, extractCodeText } from "@/lib/utils";
 
 export function CodeBlock({
   className,

@@ -1,6 +1,6 @@
 "use client";
 
-import { useReadingProgress } from "@/lib/post-hooks";
+import { useReadingProgress } from "@/lib/hooks";
 
 export default function PostReadingProgress() {
   const progress = useReadingProgress();

@@ -1,8 +1,6 @@
 import type { HTMLAttributes } from "react";
 
-import { slugifyHeading } from "@/lib/post-utils";
-import { extractTextFromReactChildren } from "@/lib/react-node-utils";
-import { cn } from "@/lib/utils";
+import { cn, extractTextFromReactChildren, slugifyHeading } from "@/lib/utils";
 
 const styles: Record<number, string> = {
   1: "text-2xl font-semibold tracking-tight mt-10 mb-3",

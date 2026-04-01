@@ -17,11 +17,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
 import { getPostData, getPostMetadata, getPostSiblings } from "@/lib/datocms";
-import {
-  extractHeadings,
-  formatReadingTime,
-  toPlainText,
-} from "@/lib/post-utils";
+import { extractHeadings, formatReadingTime, toPlainText } from "@/lib/utils";
 
 export async function generateMetadata({
   params,

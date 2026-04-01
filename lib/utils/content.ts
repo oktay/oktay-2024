@@ -1,10 +1,75 @@
+import { Children, isValidElement, type ReactNode } from "react";
+
 type StructuredTextNode = any;
+
+type ParagraphChild = {
+  type?: string;
+  tagName?: string;
+  value?: string;
+};
+
+type ParagraphNode = {
+  children?: ParagraphChild[];
+};
 
 export type TocHeading = {
   id: string;
   text: string;
   level: number;
 };
+
+export function extractCodeText(node: ReactNode): string {
+  return Children.toArray(node)
+    .map((child) => {
+      if (typeof child === "string" || typeof child === "number") {
+        return String(child);
+      }
+
+      if (isValidElement(child)) {
+        return extractCodeText(child.props.children);
+      }
+
+      return "";
+    })
+    .join("")
+    .trim();
+}
+
+export function extractTextFromReactChildren(node: ReactNode): string {
+  return Children.toArray(node)
+    .map((child) => {
+      if (typeof child === "string" || typeof child === "number") {
+        return String(child);
+      }
+
+      if (isValidElement(child)) {
+        return extractTextFromReactChildren(child.props.children);
+      }
+
+      return "";
+    })
+    .join(" ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+export function isImageOnlyParagraph(node: ParagraphNode | null | undefined) {
+  if (!node?.children?.length) {
+    return false;
+  }
+
+  return node.children.every((child) => {
+    if (child.type === "element") {
+      return child.tagName === "img";
+    }
+
+    if (child.type === "text") {
+      return (child.value || "").trim() === "";
+    }
+
+    return false;
+  });
+}
 
 export function collectStructuredText(
   node: StructuredTextNode,
